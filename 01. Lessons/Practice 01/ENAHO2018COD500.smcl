@@ -1,0 +1,18 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\New folder\ENAHO2018COD500.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}15 Oct 2021, 08:29:04
+
+{com}. reg vivienda estrato
+{err}no observations
+{txt}{search r(2000), local:r(2000);}
+
+{com}. reg vivienda estrato, noconstan
+{err}no observations
+{txt}{search r(2000), local:r(2000);}
+
+{com}. doedit
+
+. exit, clear

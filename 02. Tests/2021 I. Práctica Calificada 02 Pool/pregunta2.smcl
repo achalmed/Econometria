@@ -1,0 +1,11 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\Segundo examen practico\pregunta2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 3 Jan 2022, 21:22:22
+
+{com}. drop in 1/50
+{txt}(50 observations deleted)
+
+{com}. exit, clear

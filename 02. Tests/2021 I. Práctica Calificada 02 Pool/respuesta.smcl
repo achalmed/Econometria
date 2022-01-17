@@ -1,0 +1,223 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\Segundo examen practico\respuesta.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 3 Jan 2022, 20:07:09
+
+{com}. describe
+
+{txt}Contains data from {res}C:\Users\achal\Downloads\Segundo examen practico\Examen 02.dta
+{txt}  obs:{res}            81                          
+{txt} vars:{res}             4                          3 Jan 2022 18:14
+{txt}{hline}
+              storage   display    value
+variable name   type    format     label      variable label
+{hline}
+{p 0 48}{res}{bind:pib            }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Producto bruto Interno Real{p_end}
+{p 0 48}{bind:inflacion      }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Inflacion Anual{p_end}
+{p 0 48}{bind:fondo          }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Tasa de fondos{p_end}
+{p 0 48}{bind:bono           }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Tasa de bonos a 3 años{p_end}
+{txt}{hline}
+Sorted by: 
+
+{com}. gen time=y(1940)+_n-1
+
+. tsset time, yearly
+{res}{txt}{col 9}time variable:  {res}{col 25}time, 1940 to 2020
+{txt}{col 17}delta:  {res}1 year
+
+{com}. *Hacemos la gráficas de las variables con sus rezagos
+
+. tsline pib l.pib
+{res}
+{com}. tsline pib inflacion
+{res}
+{com}. tsline pib fondo
+{res}
+{com}. tsline inflacion l.inflacion
+{res}
+{com}. tsline fondo l.fondo
+{res}
+{com}. tsline bono l.bono
+{res}
+{com}. tsline pib l.pib
+{res}
+{com}. tsline inflacion l.inflacion
+{res}
+{com}. tsline fondo l.fondo
+{res}
+{com}. tsline bono l.bono
+{res}
+{com}. ** PREGUNTA 1B
+
+. **b) Realice pruebas de raices unitarias para estacionalidad teniendo en cuenta lo siguiente: la prueba de Dickey-Fuller test entre sus tres variacio es y teniendo en cuenta aumentado y modificado, evalue a traves de R2, Phillips-Perron test y Kwiatkowski-Phillips-Schamidt-shin, para esto inicie  escribiendo las ecuaciones de prueba y las hipotesis para estos tres casos y luego describe el procedimiento de prueba.
+
+. * Primero hacemos la evaluación a traves del r2 y el durwin watson.
+
+. reg pib inflacion fondo bono
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        81
+{txt}{hline 13}{c +}{hline 34}   F(3, 77)        = {res}    62.09
+{txt}       Model {c |} {res}  302724890         3   100908297   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  125131270        77  1625081.43   {txt}R-squared       ={res}    0.7075
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6961
+{txt}       Total {c |} {res}  427856160        80  5348202.01   {txt}Root MSE        =   {res} 1274.8
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         pib{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 3}inflacion {c |}{col 14}{res}{space 2} 115.9313{col 26}{space 2} 172.8533{col 37}{space 1}    0.67{col 46}{space 3}0.504{col 54}{space 4}-228.2635{col 67}{space 3} 460.1262
+{txt}{space 7}fondo {c |}{col 14}{res}{space 2} 319.2259{col 26}{space 2} 180.6879{col 37}{space 1}    1.77{col 46}{space 3}0.081{col 54}{space 4}-40.56964{col 67}{space 3} 679.0214
+{txt}{space 8}bono {c |}{col 14}{res}{space 2}-1319.674{col 26}{space 2} 205.5559{col 37}{space 1}   -6.42{col 46}{space 3}0.000{col 54}{space 4}-1728.988{col 67}{space 3}-910.3596
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 13435.99{col 26}{space 2} 527.2058{col 37}{space 1}   25.49{col 46}{space 3}0.000{col 54}{space 4} 12386.19{col 67}{space 3} 14485.79
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. *CALCULANDO EL ESTADÍTICO DE DURWIN WATSON
+
+. estat dwatson
+
+{txt}Durbin-Watson d-statistic({res}  4{txt},{res}    81{txt}) = {res}  .256245
+
+{com}. . *si el r2 es mayor dw, entonces hay problemas de estacionalidad
+
+. 
+. 
+. 
+. . *En ste caso el r2 es 0.7075 mayor a dw es 0.256245
+
+. 
+. 
+. 
+. . *3. Evaluando Dickey Fuller
+
+. 
+. 
+. 
+. . *aumentado (raices unitarias)
+
+. 
+. 
+. 
+. . *H0 : Raíz unitaria (No estacionaria))
+
+. 
+. 
+. 
+. . *H1 : No existe raíz unitaria (estacionaria)
+
+. dfuller PCE, lags(4)
+{err}variable {bf}PCE{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. dfuller pib, lags(4)
+
+{txt}Augmented Dickey-Fuller test for unit root         Number of obs   = {res}       76
+
+{txt}{col 32}{hline 10} Interpolated Dickey-Fuller {hline 9}
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+{hline 78}
+ Z(t)         {res}     2.272            -3.544            -2.909            -2.590
+{txt}{hline 78}
+MacKinnon approximate p-value for Z(t) = {res}0.9989
+
+{com}. *lasg son el numero de rezagos
+
+. *rechazmos la H0 a un 90% y 95% de nivel de confianza porque el t cae en la region de rechazo
+
+. *4. Evaluando Dickey Fuller moodifcado (mínimos cuadrados generalizados)
+
+. *H0 : No estacionaria
+
+. *H1 : Estacionaria
+
+. ****************************
+
+. **b) Realice pruebas de raices unitarias para estacionalidad teniendo en cuenta lo siguiente: la prueba de Dickey-Fuller test entre sus tres variacio es y teniendo en cuenta aumentado y modificado, evalue a traves de R2, Phillips-Perron test y Kwiatkowski-Phillips-Schamidt-shin, para esto inicie  escribiendo las ecuaciones de prueba y las hipotesis para estos tres casos y luego describe el procedimiento de prueba.
+
+. . *1. Evaluando Dickey Fuller
+
+. . *aumentado (raices unitarias)
+
+. *H0 : Raíz unitaria (No estacionaria))
+
+. *H1 : No existe raíz unitaria (estacionaria)
+
+. dfuller pib, lags(4)
+
+{txt}Augmented Dickey-Fuller test for unit root         Number of obs   = {res}       76
+
+{txt}{col 32}{hline 10} Interpolated Dickey-Fuller {hline 9}
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+{hline 78}
+ Z(t)         {res}     2.272            -3.544            -2.909            -2.590
+{txt}{hline 78}
+MacKinnon approximate p-value for Z(t) = {res}0.9989
+
+{com}. dfuller pib, lags(1)
+
+{txt}Augmented Dickey-Fuller test for unit root         Number of obs   = {res}       79
+
+{txt}{col 32}{hline 10} Interpolated Dickey-Fuller {hline 9}
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+{hline 78}
+ Z(t)         {res}     3.723            -3.539            -2.907            -2.588
+{txt}{hline 78}
+MacKinnon approximate p-value for Z(t) = {res}1.0000
+
+{com}. dfuller inflacion, lags(1)
+
+{txt}Augmented Dickey-Fuller test for unit root         Number of obs   = {res}       79
+
+{txt}{col 32}{hline 10} Interpolated Dickey-Fuller {hline 9}
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+{hline 78}
+ Z(t)         {res}    -2.693            -3.539            -2.907            -2.588
+{txt}{hline 78}
+MacKinnon approximate p-value for Z(t) = {res}0.0753
+
+{com}. dfuller fondo, lags(1)
+
+{txt}Augmented Dickey-Fuller test for unit root         Number of obs   = {res}       79
+
+{txt}{col 32}{hline 10} Interpolated Dickey-Fuller {hline 9}
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+{hline 78}
+ Z(t)         {res}    -2.090            -3.539            -2.907            -2.588
+{txt}{hline 78}
+MacKinnon approximate p-value for Z(t) = {res}0.2484
+
+{com}. dfuller bono, lags(1)
+
+{txt}Augmented Dickey-Fuller test for unit root         Number of obs   = {res}       79
+
+{txt}{col 32}{hline 10} Interpolated Dickey-Fuller {hline 9}
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+{hline 78}
+ Z(t)         {res}    -1.976            -3.539            -2.907            -2.588
+{txt}{hline 78}
+MacKinnon approximate p-value for Z(t) = {res}0.2970
+
+{com}. *2. Evaluando Dickey Fuller modifcado (mínimos cuadrados generalizados)
+
+. *H0 : No estacionaria
+
+. *lasg son el numero de rezagos
+
+. 
+. *rechazmos la H0 a un 90% y 95% de nivel de confianza porque el t cae en la region de rechazo
+
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\Segundo examen practico\respuesta.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 3 Jan 2022, 20:53:39
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

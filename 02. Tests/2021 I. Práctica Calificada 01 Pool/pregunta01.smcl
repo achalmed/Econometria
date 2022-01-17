@@ -1,0 +1,203 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\OneDrive\Documentos\Classroom\Econometría\02. Tests\A. EXAMEEEEEEE\pregunta01.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}11 Dec 2021, 07:47:36
+
+{com}. gen time=y(1975) +_n-1
+
+. tsset time, yearly
+{res}{txt}{col 9}time variable:  {res}{col 25}time, 1975 to 2727
+{txt}{col 17}delta:  {res}1 year
+
+{com}. gen logsal=log(sal)
+{txt}(325 missing values generated)
+
+{com}. gen inno=faminc+huswage
+
+. drop inno
+
+. gen inno= (faminc- hushrs* huswage)/1000
+
+. gen niñosT= nniños+ nniños2
+
+. drop inno
+
+.  gen salmarid= huswage* hushrs
+
+. gen inno=( faminc- salmarid)/1000
+
+. gen exp2= expe* expe
+
+. reg logsal W educ expe exp2
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       428
+{txt}{hline 13}{c +}{hline 34}   F(4, 423)       = {res}    20.16
+{txt}       Model {c |} {res} 35.7620024         4   8.9405006   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 187.565438       423  .443417112   {txt}R-squared       ={res}    0.1601
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1522
+{txt}       Total {c |} {res} 223.327441       427  .523015084   {txt}Root MSE        =   {res}  .6659
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      logsal{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 11}W {c |}{col 14}{res}{space 2}-.0000565{col 26}{space 2} .0000438{col 37}{space 1}   -1.29{col 46}{space 3}0.197{col 54}{space 4}-.0001426{col 67}{space 3} .0000295
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} .1062139{col 26}{space 2} .0141698{col 37}{space 1}    7.50{col 46}{space 3}0.000{col 54}{space 4} .0783619{col 67}{space 3} .1340659
+{txt}{space 8}expe {c |}{col 14}{res}{space 2} .0447035{col 26}{space 2}  .013387{col 37}{space 1}    3.34{col 46}{space 3}0.001{col 54}{space 4} .0183902{col 67}{space 3} .0710168
+{txt}{space 8}exp2 {c |}{col 14}{res}{space 2}-.0008585{col 26}{space 2} .0003946{col 37}{space 1}   -2.18{col 46}{space 3}0.030{col 54}{space 4}-.0016342{col 67}{space 3}-.0000828
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.4619955{col 26}{space 2} .2038477{col 37}{space 1}   -2.27{col 46}{space 3}0.024{col 54}{space 4}-.8626761{col 67}{space 3}-.0613149
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. **+Hacemos la correlación***
+
+. predict residuo1, resid
+{txt}(325 missing values generated)
+
+{com}. cor educ fatheduc
+{txt}(obs=753)
+
+             {c |}     educ fatheduc
+{hline 13}{c +}{hline 18}
+        educ {c |}{res}   1.0000
+    {txt}fatheduc {c |}{res}   0.4425   1.0000
+
+
+{com}. cor fatheduc residuo1
+{txt}(obs=428)
+
+             {c |} fatheduc residuo1
+{hline 13}{c +}{hline 18}
+    fatheduc {c |}{res}   1.0000
+    {txt}residuo1 {c |}{res}  -0.0526   1.0000
+
+
+{com}. ***la variable fatheduc no es buen indicador del salario porque se observa que no hay correlación
+
+. ****CONDICION DE ORDEN*****
+
+. PREGUNTA 2
+{err}command {bf}PREGUNTA{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ***PREGUNTA 2
+
+. reg W educedad niñosT inno expe exp2
+{err}variable {bf}educedad{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. reg W educ edad niñosT inno expe exp2
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       753
+{txt}{hline 13}{c +}{hline 34}   F(6, 746)       = {res}    65.24
+{txt}       Model {c |} {res}  196478460         6    32746410   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  374431264       746  501918.584   {txt}R-squared       ={res}    0.3441
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.3389
+{txt}       Total {c |} {res}  570909724       752  759188.463   {txt}Root MSE        =   {res} 708.46
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           W{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2}-12.83213{col 26}{space 2} 11.78045{col 37}{space 1}   -1.09{col 46}{space 3}0.276{col 54}{space 4} -35.9589{col 67}{space 3} 10.29464
+{txt}{space 8}edad {c |}{col 14}{res}{space 2} -28.5179{col 26}{space 2} 3.922265{col 37}{space 1}   -7.27{col 46}{space 3}0.000{col 54}{space 4}-36.21789{col 67}{space 3}-20.81791
+{txt}{space 6}niñosT {c |}{col 14}{res}{space 2}-72.43067{col 26}{space 2} 21.01557{col 37}{space 1}   -3.45{col 46}{space 3}0.001{col 54}{space 4}-113.6874{col 67}{space 3}-31.17398
+{txt}{space 8}inno {c |}{col 14}{res}{space 2} 45.29972{col 26}{space 2} 3.791727{col 37}{space 1}   11.95{col 46}{space 3}0.000{col 54}{space 4}   37.856{col 67}{space 3} 52.74345
+{txt}{space 8}expe {c |}{col 14}{res}{space 2} 64.85261{col 26}{space 2} 9.372144{col 37}{space 1}    6.92{col 46}{space 3}0.000{col 54}{space 4}  46.4537{col 67}{space 3} 83.25153
+{txt}{space 8}exp2 {c |}{col 14}{res}{space 2}-.7543596{col 26}{space 2} .3055313{col 37}{space 1}   -2.47{col 46}{space 3}0.014{col 54}{space 4}-1.354163{col 67}{space 3} -.154556
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  1367.46{col 26}{space 2} 252.4684{col 37}{space 1}    5.42{col 46}{space 3}0.000{col 54}{space 4} 871.8271{col 67}{space 3} 1863.093
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg logsal educ edad niñosT inno expe exp2
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       428
+{txt}{hline 13}{c +}{hline 34}   F(6, 421)       = {res}    22.52
+{txt}       Model {c |} {res} 54.2532783         6  9.04221305   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 169.074163       421  .401601336   {txt}R-squared       ={res}    0.2429
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2321
+{txt}       Total {c |} {res} 223.327441       427  .523015084   {txt}Root MSE        =   {res} .63372
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      logsal{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} .0859562{col 26}{space 2} .0138403{col 37}{space 1}    6.21{col 46}{space 3}0.000{col 54}{space 4} .0587516{col 67}{space 3} .1131609
+{txt}{space 8}edad {c |}{col 14}{res}{space 2}-.0052156{col 26}{space 2} .0049534{col 37}{space 1}   -1.05{col 46}{space 3}0.293{col 54}{space 4}-.0149521{col 67}{space 3} .0045209
+{txt}{space 6}niñosT {c |}{col 14}{res}{space 2}-.0109696{col 26}{space 2} .0255954{col 37}{space 1}   -0.43{col 46}{space 3}0.668{col 54}{space 4}-.0612803{col 67}{space 3} .0393412
+{txt}{space 8}inno {c |}{col 14}{res}{space 2} .0295036{col 26}{space 2} .0042864{col 37}{space 1}    6.88{col 46}{space 3}0.000{col 54}{space 4} .0210782{col 67}{space 3} .0379291
+{txt}{space 8}expe {c |}{col 14}{res}{space 2} .0346933{col 26}{space 2} .0127112{col 37}{space 1}    2.73{col 46}{space 3}0.007{col 54}{space 4}  .009708{col 67}{space 3} .0596787
+{txt}{space 8}exp2 {c |}{col 14}{res}{space 2}-.0006473{col 26}{space 2} .0003812{col 37}{space 1}   -1.70{col 46}{space 3}0.090{col 54}{space 4}-.0013966{col 67}{space 3} .0001021
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.2162499{col 26}{space 2} .3014169{col 37}{space 1}   -0.72{col 46}{space 3}0.473{col 54}{space 4}-.8087195{col 67}{space 3} .3762196
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. ***Ahora evaluamos las condiciones de orden
+
+. **primero identificamos las variabñes endogenas y exogenas del modelo
+
+. **VARIABLES ENDOGENAS: W LOG(SAL)
+
+. **VARIABLES EXÓGENAS: EDUC EDAD NIÑOST INNO EXPE EXP2
+
+. **Hacemos la condicion de orden de la primera ecuación
+
+. **hacemos la condicion de orden para la primera la ecuación
+
+. **Identificamos el níumero de variables excluidas en la primera ecuación: 2(expe exp2)
+
+. **Número de variables endógenas incluidas al lado derecho de la 1ra ECUA : 1(logsal)
+
+. ****Como el número de variables exógenas escritas en la primera ecuación es mayor el número de variables endógenas. Incluidas uno al lado derecho de la primera ecuación.
+
+. *****Se concluye que la ecuación de las horas de trabajo está Sobreidentificada.
+
+. **Hacemos la CONDICIÓN DE ORDEN de Orden de la Segunda Ecuación
+
+. **VARIABLES ENDOGENAS: W
+
+. **VARIABLES EXOGENAS: EDAD NIÑOS INNO
+
+. ***PREGUNTA C
+
+. predict W_est
+{txt}(option {bf:xb} assumed; fitted values)
+
+{com}. reg logsal W_sal educ expe exp2
+{err}variable {bf}W_sal{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. reg logsal W_est  educ expe exp2
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       428
+{txt}{hline 13}{c +}{hline 34}   F(4, 423)       = {res}    33.93
+{txt}       Model {c |} {res} 54.2532772         4  13.5633193   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 169.074164       423  .399702515   {txt}R-squared       ={res}    0.2429
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2358
+{txt}       Total {c |} {res} 223.327441       427  .523015084   {txt}Root MSE        =   {res} .63222
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      logsal{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}W_est {c |}{col 14}{res}{space 2}        1{col 26}{space 2} .1441676{col 37}{space 1}    6.94{col 46}{space 3}0.000{col 54}{space 4} .7166258{col 67}{space 3} 1.283374
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} 4.90e-09{col 26}{space 2}    .0205{col 37}{space 1}    0.00{col 46}{space 3}1.000{col 54}{space 4}-.0402946{col 67}{space 3} .0402947
+{txt}{space 8}expe {c |}{col 14}{res}{space 2} 1.88e-09{col 26}{space 2} .0138614{col 37}{space 1}    0.00{col 46}{space 3}1.000{col 54}{space 4}-.0272457{col 67}{space 3} .0272457
+{txt}{space 8}exp2 {c |}{col 14}{res}{space 2}-4.13e-11{col 26}{space 2}  .000391{col 37}{space 1}   -0.00{col 46}{space 3}1.000{col 54}{space 4}-.0007685{col 67}{space 3} .0007685
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-3.27e-08{col 26}{space 2} .2029121{col 37}{space 1}   -0.00{col 46}{space 3}1.000{col 54}{space 4}-.3988417{col 67}{space 3} .3988416
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. save "C:\Users\achal\OneDrive\Documentos\Classroom\Econometría\02. Tests\A. EXAMEEEEEEE\Pregunta 01.dta", replace
+{txt}file C:\Users\achal\OneDrive\Documentos\Classroom\Econometría\02. Tests\A. EXAMEEEEEEE\Pregunta 01.dta saved
+
+{com}. 
+. 
+. 
+. 
+. 
+. 
+. *****PREGUNTA D
+
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\OneDrive\Documentos\Classroom\Econometría\02. Tests\A. EXAMEEEEEEE\pregunta01.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}11 Dec 2021, 08:45:10
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

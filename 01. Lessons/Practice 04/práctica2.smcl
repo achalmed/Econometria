@@ -1,0 +1,52 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\Base de dato 2\práctica2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}12 Nov 2021, 09:06:55
+
+{com}. gen time=y(1959)+_n-1
+
+. tsset time, yearly
+{res}{txt}{col 9}time variable:  {res}{col 25}time, 1959 to 2006
+{txt}{col 17}delta:  {res}1 year
+
+{com}. reg PPC PPDI L.PPCE
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        47
+{txt}{hline 13}{c +}{hline 34}   F(2, 44)        = {res} 12306.99
+{txt}       Model {c |} {res} 1.2444e+09         2   622213234   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2224539.07        44  50557.7061   {txt}R-squared       ={res}    0.9982
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9981
+{txt}       Total {c |} {res} 1.2467e+09        46  27101108.9   {txt}Root MSE        =   {res} 224.85
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        PPCE{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}PPDI {c |}{col 14}{res}{space 2} .2138902{col 26}{space 2} .0706166{col 37}{space 1}    3.03{col 46}{space 3}0.004{col 54}{space 4} .0715717{col 67}{space 3} .3562086
+{txt}{space 12} {c |}
+{space 8}PPCE {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .7971456{col 26}{space 2} .0733083{col 37}{space 1}   10.87{col 46}{space 3}0.000{col 54}{space 4} .6494025{col 67}{space 3} .9448886
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} -252.919{col 26}{space 2} 157.3517{col 37}{space 1}   -1.61{col 46}{space 3}0.115{col 54}{space 4}-570.0405{col 67}{space 3} 64.20263
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. *Calculando B1
+
+. display _b[PPDI]
+{res}.21389015
+
+{com}. *Calculando B2
+
+. Log close
+{err}command {bf}Log{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\Base de dato 2\práctica2.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}12 Nov 2021, 09:09:24
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

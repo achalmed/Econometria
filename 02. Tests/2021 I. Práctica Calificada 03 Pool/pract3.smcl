@@ -1,0 +1,279 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\3 examen práctico pool\pract3.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 8 Jan 2022, 07:15:22
+
+{com}. **PREGUNTA 1
+
+. **PREGUNTA 2
+
+. **MÉTODO MCI
+
+. *Para este método usamos las ecuaciones reducidas.
+
+. reg p ps pf di
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        30
+{txt}{hline 13}{c +}{hline 34}   F(3, 26)        = {res}    69.07
+{txt}       Model {c |} {res} 9033.01906         3  3011.00635   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1133.45369        26  43.5943729   {txt}R-squared       ={res}    0.8885
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.8756
+{txt}       Total {c |} {res} 10166.4728        29  350.568026   {txt}Root MSE        =   {res} 6.6026
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           p{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}ps {c |}{col 14}{res}{space 2} 1.712487{col 26}{space 2} .3507337{col 37}{space 1}    4.88{col 46}{space 3}0.000{col 54}{space 4} .9915438{col 67}{space 3} 2.433431
+{txt}{space 10}pf {c |}{col 14}{res}{space 2} 1.354409{col 26}{space 2} .2982102{col 37}{space 1}    4.54{col 46}{space 3}0.000{col 54}{space 4}  .741429{col 67}{space 3} 1.967389
+{txt}{space 10}di {c |}{col 14}{res}{space 2} 7.759804{col 26}{space 2}  1.75577{col 37}{space 1}    4.42{col 46}{space 3}0.000{col 54}{space 4} 4.150768{col 67}{space 3} 11.36884
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-32.95381{col 26}{space 2} 7.971495{col 37}{space 1}   -4.13{col 46}{space 3}0.000{col 54}{space 4}-49.33945{col 67}{space 3}-16.56817
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg q ps pf di
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        30
+{txt}{hline 13}{c +}{hline 34}   F(3, 26)        = {res}    19.16
+{txt}       Model {c |} {res} 424.909115         3  141.636372   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 192.227696        26  7.39337293   {txt}R-squared       ={res}    0.6885
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6526
+{txt}       Total {c |} {res} 617.136811        29  21.2805797   {txt}Root MSE        =   {res} 2.7191
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           q{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}ps {c |}{col 14}{res}{space 2} .6659558{col 26}{space 2} .1444387{col 37}{space 1}    4.61{col 46}{space 3}0.000{col 54}{space 4} .3690577{col 67}{space 3} .9628538
+{txt}{space 10}pf {c |}{col 14}{res}{space 2}-.4966312{col 26}{space 2} .1228085{col 37}{space 1}   -4.04{col 46}{space 3}0.000{col 54}{space 4}-.7490678{col 67}{space 3}-.2441947
+{txt}{space 10}di {c |}{col 14}{res}{space 2} 2.112489{col 26}{space 2} .7230588{col 37}{space 1}    2.92{col 46}{space 3}0.007{col 54}{space 4} .6262203{col 67}{space 3} 3.598758
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  7.69336{col 26}{space 2} 3.282811{col 37}{space 1}    2.34{col 46}{space 3}0.027{col 54}{space 4} .9454456{col 67}{space 3} 14.44127
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. ****MÉTODO VI
+
+. reg p ps pf di
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        30
+{txt}{hline 13}{c +}{hline 34}   F(3, 26)        = {res}    69.07
+{txt}       Model {c |} {res} 9033.01906         3  3011.00635   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1133.45369        26  43.5943729   {txt}R-squared       ={res}    0.8885
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.8756
+{txt}       Total {c |} {res} 10166.4728        29  350.568026   {txt}Root MSE        =   {res} 6.6026
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           p{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}ps {c |}{col 14}{res}{space 2} 1.712487{col 26}{space 2} .3507337{col 37}{space 1}    4.88{col 46}{space 3}0.000{col 54}{space 4} .9915438{col 67}{space 3} 2.433431
+{txt}{space 10}pf {c |}{col 14}{res}{space 2} 1.354409{col 26}{space 2} .2982102{col 37}{space 1}    4.54{col 46}{space 3}0.000{col 54}{space 4}  .741429{col 67}{space 3} 1.967389
+{txt}{space 10}di {c |}{col 14}{res}{space 2} 7.759804{col 26}{space 2}  1.75577{col 37}{space 1}    4.42{col 46}{space 3}0.000{col 54}{space 4} 4.150768{col 67}{space 3} 11.36884
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-32.95381{col 26}{space 2} 7.971495{col 37}{space 1}   -4.13{col 46}{space 3}0.000{col 54}{space 4}-49.33945{col 67}{space 3}-16.56817
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. predict p_est
+{txt}(option {bf:xb} assumed; fitted values)
+
+{com}. reg q p_est ps di
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        30
+{txt}{hline 13}{c +}{hline 34}   F(3, 26)        = {res}    19.16
+{txt}       Model {c |} {res} 424.909142         3  141.636381   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 192.227668        26  7.39337186   {txt}R-squared       ={res}    0.6885
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6526
+{txt}       Total {c |} {res} 617.136811        29  21.2805797   {txt}Root MSE        =   {res} 2.7191
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           q{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}p_est {c |}{col 14}{res}{space 2}-.3666775{col 26}{space 2} .0906732{col 37}{space 1}   -4.04{col 46}{space 3}0.000{col 54}{space 4}-.5530589{col 67}{space 3}-.1802962
+{txt}{space 10}ps {c |}{col 14}{res}{space 2} 1.293886{col 26}{space 2}  .196049{col 37}{space 1}    6.60{col 46}{space 3}0.000{col 54}{space 4} .8909019{col 67}{space 3} 1.696871
+{txt}{space 10}di {c |}{col 14}{res}{space 2} 4.957835{col 26}{space 2}  1.28123{col 37}{space 1}    3.87{col 46}{space 3}0.001{col 54}{space 4} 2.324229{col 67}{space 3} 7.591441
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-4.390062{col 26}{space 2} 3.084427{col 37}{space 1}   -1.42{col 46}{space 3}0.167{col 54}{space 4}-10.73019{col 67}{space 3} 1.950068
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg q ps pf di
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        30
+{txt}{hline 13}{c +}{hline 34}   F(3, 26)        = {res}    19.16
+{txt}       Model {c |} {res} 424.909115         3  141.636372   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 192.227696        26  7.39337293   {txt}R-squared       ={res}    0.6885
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6526
+{txt}       Total {c |} {res} 617.136811        29  21.2805797   {txt}Root MSE        =   {res} 2.7191
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           q{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}ps {c |}{col 14}{res}{space 2} .6659558{col 26}{space 2} .1444387{col 37}{space 1}    4.61{col 46}{space 3}0.000{col 54}{space 4} .3690577{col 67}{space 3} .9628538
+{txt}{space 10}pf {c |}{col 14}{res}{space 2}-.4966312{col 26}{space 2} .1228085{col 37}{space 1}   -4.04{col 46}{space 3}0.000{col 54}{space 4}-.7490678{col 67}{space 3}-.2441947
+{txt}{space 10}di {c |}{col 14}{res}{space 2} 2.112489{col 26}{space 2} .7230588{col 37}{space 1}    2.92{col 46}{space 3}0.007{col 54}{space 4} .6262203{col 67}{space 3} 3.598758
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  7.69336{col 26}{space 2} 3.282811{col 37}{space 1}    2.34{col 46}{space 3}0.027{col 54}{space 4} .9454456{col 67}{space 3} 14.44127
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. predict q_est
+{txt}(option {bf:xb} assumed; fitted values)
+
+{com}. . **PREGUNTA C
+
+.  **Ecuacion de la Demanda en función de su precio
+
+. reg p q ps di
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        30
+{txt}{hline 13}{c +}{hline 34}   F(3, 26)        = {res}    34.95
+{txt}       Model {c |} {res} 8146.18316         3  2715.39439   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  2020.2896        26  77.7034462   {txt}R-squared       ={res}    0.8013
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.7783
+{txt}       Total {c |} {res} 10166.4728        29  350.568026   {txt}Root MSE        =   {res}  8.815
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           p{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 11}q {c |}{col 14}{res}{space 2} .1991848{col 26}{space 2} .4981431{col 37}{space 1}    0.40{col 46}{space 3}0.693{col 54}{space 4}-.8247631{col 67}{space 3} 1.223133
+{txt}{space 10}ps {c |}{col 14}{res}{space 2} 1.330692{col 26}{space 2} .5954783{col 37}{space 1}    2.23{col 46}{space 3}0.034{col 54}{space 4} .1066686{col 67}{space 3} 2.554715
+{txt}{space 10}di {c |}{col 14}{res}{space 2} 12.58389{col 26}{space 2} 1.858965{col 37}{space 1}    6.77{col 46}{space 3}0.000{col 54}{space 4} 8.762735{col 67}{space 3} 16.40505
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-14.30451{col 26}{space 2} 9.102456{col 37}{space 1}   -1.57{col 46}{space 3}0.128{col 54}{space 4}-33.01488{col 67}{space 3} 4.405853
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg p q pf
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        30
+{txt}{hline 13}{c +}{hline 34}   F(2, 27)        = {res}   271.16
+{txt}       Model {c |} {res} 9684.32509         2  4842.16254   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  482.14767        27  17.8573211   {txt}R-squared       ={res}    0.9526
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9491
+{txt}       Total {c |} {res} 10166.4728        29  350.568026   {txt}Root MSE        =   {res} 4.2258
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           p{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 11}q {c |}{col 14}{res}{space 2}  2.66509{col 26}{space 2} .1722035{col 37}{space 1}   15.48{col 46}{space 3}0.000{col 54}{space 4} 2.311758{col 67}{space 3} 3.018423
+{txt}{space 10}pf {c |}{col 14}{res}{space 2} 2.922851{col 26}{space 2} .1491423{col 37}{space 1}   19.60{col 46}{space 3}0.000{col 54}{space 4} 2.616836{col 67}{space 3} 3.228865
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-52.94449{col 26}{space 2} 5.055725{col 37}{space 1}  -10.47{col 46}{space 3}0.000{col 54}{space 4}-63.31798{col 67}{space 3}  -42.571
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}.  reg2 (p= q ps di)(p= q pf), endog(p q) exog(ps di pf) 2sls
+{err}command {bf}reg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}.  reg2 (p= q ps di)(p= q pf), endog(p) exog(ps di pf) 2sls
+{err}command {bf}reg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}.  reg2 (p= q ps di)(p= q pf), endog(p) exog( q ps di pf) 2sls
+{err}command {bf}reg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}.  reg2 (p= q ps di)(p= q pf), endog(p) exog(q ps di pf) 2sls
+{err}command {bf}reg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ivregress 2sls (q= pf) ps di
+{err}=exp not allowed
+{txt}{search r(101), local:r(101);}
+
+{com}. ivregress 2sls p (q=pf) ps di
+{res}
+{txt}{col 1}Instrumental variables (2SLS) regression{col 51}Number of obs{col 67}= {res}        30
+{txt}{col 1}{col 51}Wald chi2({res}3{txt}){col 67}= {res}     57.63
+{txt}{col 1}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}{col 1}{col 51}R-squared{col 67}= {res}    0.5375
+{txt}{col 51}Root MSE{col 67}=    {res} 12.519
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           p{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 11}q {c |}{col 14}{res}{space 2}-2.727192{col 26}{space 2}  1.13854{col 37}{space 1}   -2.40{col 46}{space 3}0.017{col 54}{space 4} -4.95869{col 67}{space 3}-.4956942
+{txt}{space 10}ps {c |}{col 14}{res}{space 2} 3.528677{col 26}{space 2} 1.078955{col 37}{space 1}    3.27{col 46}{space 3}0.001{col 54}{space 4} 1.413963{col 67}{space 3}  5.64339
+{txt}{space 10}di {c |}{col 14}{res}{space 2} 13.52097{col 26}{space 2} 2.655544{col 37}{space 1}    5.09{col 46}{space 3}0.000{col 54}{space 4} 8.316197{col 67}{space 3} 18.72574
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-11.97254{col 26}{space 2}   12.947{col 37}{space 1}   -0.92{col 46}{space 3}0.355{col 54}{space 4} -37.3482{col 67}{space 3} 13.40312
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 15 70}Instrumented:{space 2}q{p_end}
+{p 0 15 70}Instruments:{space 3}ps di pf{p_end}
+
+{com}. ivregress 2sls p (q= ps di) ps di
+{res}{err}equation not identified; must have at least as many instruments not in
+the regression as there are instrumented variables
+{txt}{search r(481), local:r(481);}
+
+{com}. ivregress 2sls p (q= ps di)
+{res}
+{txt}{col 1}Instrumental variables (2SLS) regression{col 51}Number of obs{col 67}= {res}        30
+{txt}{col 1}{col 51}Wald chi2({res}1{txt}){col 67}= {res}     15.93
+{txt}{col 1}{col 51}Prob > chi2{col 67}= {res}    0.0001
+{txt}{col 1}{col 51}R-squared{col 67}= {res}    0.0354
+{txt}{col 51}Root MSE{col 67}=    {res}  18.08
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           p{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 11}q {c |}{col 14}{res}{space 2} 4.138825{col 26}{space 2} 1.036959{col 37}{space 1}    3.99{col 46}{space 3}0.000{col 54}{space 4} 2.106423{col 67}{space 3} 6.171228
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-13.67182{col 26}{space 2} 19.42309{col 37}{space 1}   -0.70{col 46}{space 3}0.481{col 54}{space 4}-51.74037{col 67}{space 3} 24.39674
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 15 70}Instrumented:{space 2}q{p_end}
+{p 0 15 70}Instruments:{space 3}ps di{p_end}
+
+{com}. ivregress 2sls p (q=pf)
+{res}
+{txt}{col 1}Instrumental variables (2SLS) regression{col 51}Number of obs{col 67}= {res}        30
+{txt}{col 1}{col 51}Wald chi2({res}1{txt}){col 67}= {res}      0.57
+{txt}{col 1}{col 51}Prob > chi2{col 67}= {res}    0.4495
+{txt}{col 1}{col 51}R-squared{col 67}= {res}         .
+{txt}{col 51}Root MSE{col 67}=    {res} 97.233
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           p{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 11}q {c |}{col 14}{res}{space 2}-19.01887{col 26}{space 2} 25.14859{col 37}{space 1}   -0.76{col 46}{space 3}0.449{col 54}{space 4} -68.3092{col 67}{space 3} 30.27146
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 413.7806{col 26}{space 2} 464.5404{col 37}{space 1}    0.89{col 46}{space 3}0.373{col 54}{space 4}-496.7018{col 67}{space 3} 1324.263
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 15 70}Instrumented:{space 2}q{p_end}
+{p 0 15 70}Instruments:{space 3}pf{p_end}
+
+{com}. ivreg2 p (q= ps di)
+{err}command {bf}ivreg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ivreg2 p (q= ps di)
+{err}command {bf}ivreg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ivreg2 p (q= pf) ps di, first
+{err}command {bf}ivreg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ivreg2 2sls p (q=pf) ps di
+{err}command {bf}ivreg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ivreg2 2sls p (q=pf) ps di, first
+{err}command {bf}ivreg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ivregress2 2sls p (q=pf) ps di
+{err}command {bf}ivregress2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ivregress2 p (q=pf) ps di
+{err}command {bf}ivregress2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ivregress2 p (q=pf) ps di, first
+{err}command {bf}ivregress2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. 
+. ivreg2 p (q= pf) ps di, first
+{err}command {bf}ivreg2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ivregress2 p (q= pf) ps di, first
+{err}command {bf}ivregress2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\3 examen práctico pool\pract3.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 8 Jan 2022, 09:15:46
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

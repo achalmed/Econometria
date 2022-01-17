@@ -1,0 +1,217 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\pregun01.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 3 Jan 2022, 15:58:17
+
+{com}. describe
+
+{txt}Contains data from {res}C:\Users\achal\Downloads\Pregunta 01 (1).dta
+{txt}  obs:{res}           753                          
+{txt} vars:{res}            19                          11 Dec 2021 06:05
+{txt}{hline}
+              storage   display    value
+variable name   type    format     label      variable label
+{hline}
+{p 0 48}{res}{bind:inlf           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}1 si está en la fuerza laboral, 1975{p_end}
+{p 0 48}{bind:W              }{txt}{bind: int     }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}horas trabajadas, 1975{p_end}
+{p 0 48}{bind:nniños         }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Niños<6 años{p_end}
+{p 0 48}{bind:nniños2        }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Niños de 6-18 años{p_end}
+{p 0 48}{bind:edad           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}edad de la mujer en años{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}años de escolaridad{p_end}
+{p 0 48}{bind:sal            }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}salario estimado, horas{p_end}
+{p 0 48}{bind:repwage        }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}salario informado en la entrevista en 1976{p_end}
+{p 0 48}{bind:hushrs         }{txt}{bind: int     }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}horas trabajadas por el marido, 1975{p_end}
+{p 0 48}{bind:husage         }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}edad del marido{p_end}
+{p 0 48}{bind:huseduc        }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}años de escolaridad del marido{p_end}
+{p 0 48}{bind:huswage        }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}salario por hora del marido, 1975{p_end}
+{p 0 48}{bind:faminc         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}ingresos familiares, 1975{p_end}
+{p 0 48}{bind:mtr            }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}alimentado. tasa impositiva marginal que enfrenta la mujer{p_end}
+{p 0 48}{bind:motheduc       }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}años de escolaridad de la madre{p_end}
+{p 0 48}{bind:fatheduc       }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}años de escolaridad del padre{p_end}
+{p 0 48}{bind:unem           }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}unem. tasa en comarca de resid.{p_end}
+{p 0 48}{bind:ciudad         }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}= 1 si vive en SMSA{p_end}
+{p 0 48}{bind:expe           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Experiencia actual{p_end}
+{txt}{hline}
+Sorted by: 
+
+{com}. *La data corresponde a información de mujeres, 1 corresponde a FEMININO, entonces trabajamos todo con 1.
+
+. keep if inlf==1
+{txt}(325 observations deleted)
+
+{com}. describe
+
+{txt}Contains data from {res}C:\Users\achal\Downloads\Pregunta 01 (1).dta
+{txt}  obs:{res}           428                          
+{txt} vars:{res}            19                          11 Dec 2021 06:05
+{txt}{hline}
+              storage   display    value
+variable name   type    format     label      variable label
+{hline}
+{p 0 48}{res}{bind:inlf           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}1 si está en la fuerza laboral, 1975{p_end}
+{p 0 48}{bind:W              }{txt}{bind: int     }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}horas trabajadas, 1975{p_end}
+{p 0 48}{bind:nniños         }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Niños<6 años{p_end}
+{p 0 48}{bind:nniños2        }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Niños de 6-18 años{p_end}
+{p 0 48}{bind:edad           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}edad de la mujer en años{p_end}
+{p 0 48}{bind:educ           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}años de escolaridad{p_end}
+{p 0 48}{bind:sal            }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}salario estimado, horas{p_end}
+{p 0 48}{bind:repwage        }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}salario informado en la entrevista en 1976{p_end}
+{p 0 48}{bind:hushrs         }{txt}{bind: int     }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}horas trabajadas por el marido, 1975{p_end}
+{p 0 48}{bind:husage         }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}edad del marido{p_end}
+{p 0 48}{bind:huseduc        }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}años de escolaridad del marido{p_end}
+{p 0 48}{bind:huswage        }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}salario por hora del marido, 1975{p_end}
+{p 0 48}{bind:faminc         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}ingresos familiares, 1975{p_end}
+{p 0 48}{bind:mtr            }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}alimentado. tasa impositiva marginal que enfrenta la mujer{p_end}
+{p 0 48}{bind:motheduc       }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}años de escolaridad de la madre{p_end}
+{p 0 48}{bind:fatheduc       }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}años de escolaridad del padre{p_end}
+{p 0 48}{bind:unem           }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}unem. tasa en comarca de resid.{p_end}
+{p 0 48}{bind:ciudad         }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}= 1 si vive en SMSA{p_end}
+{p 0 48}{bind:expe           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Experiencia actual{p_end}
+{txt}{hline}
+Sorted by: 
+{res}     Note: Dataset has changed since last saved.
+
+{com}. *Se observa de que ahora nos quedamos solo con 428 observaciones.
+
+. *Nuestra data es de corte transversal
+
+. *VARIABLES ENDÓGENAS: W sal y las VARIBLES EXÓGENAS son todas las variables que no estan incluidas.
+
+. gen lsal=ln( sal )
+
+. gen expe2= expe* expe
+
+. gen inno=(faminc- sal* W)/1000
+
+. *inno es el salrio que no se percibe
+
+. *VARIABLES EXÓGENAS: educ edad nniños inno expe expe2
+
+. *PREGUNTA 1A
+
+. *Condiciones básicas para que una variable sea considerada con variables instrumental: 1. la variable instrumental "fatheduc" debe estar correlacionado con la variable "educ" y 2. Es que la variable instrumental "fatheduc" NO esté correlacionado con los términos de error.
+
+. reg edu fatheduc
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       428
+{txt}{hline 13}{c +}{hline 34}   F(1, 426)       = {res}    88.84
+{txt}       Model {c |} {res} 384.841983         1  384.841983   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1845.35428       426  4.33181756   {txt}R-squared       ={res}    0.1726
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1706
+{txt}       Total {c |} {res} 2230.19626       427  5.22294206   {txt}Root MSE        =   {res} 2.0813
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        educ{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}fatheduc {c |}{col 14}{res}{space 2} .2694416{col 26}{space 2} .0285863{col 37}{space 1}    9.43{col 46}{space 3}0.000{col 54}{space 4} .2132538{col 67}{space 3} .3256295
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.23705{col 26}{space 2} .2759363{col 37}{space 1}   37.10{col 46}{space 3}0.000{col 54}{space 4} 9.694685{col 67}{space 3} 10.77942
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. *La variable fatheduc explica en un 17.26% a la educación, son estadíticamente siginifcativas y tien una relación positiva.
+
+. *Lo que interesa es la predicción del error.
+
+. predict e, resid
+
+. *una vez estimado los residuos hacemos la correlación entre fatheduc, e educ
+
+. cor fatheduc e educ
+{txt}(obs=428)
+
+             {c |} fatheduc        e     educ
+{hline 13}{c +}{hline 27}
+    fatheduc {c |}{res}   1.0000
+           {txt}e {c |}{res}  -0.0000   1.0000
+        {txt}educ {c |}{res}   0.4154   0.9096   1.0000
+
+
+{com}. * educ y fatheduc deberían estar correlaciondos, porque el fatheduc es la variable instrumental de educ, entonces observamos el cuadro, donde estan correlacionados en un  41.54%. Además fatheduc no está correlacionado con el témino error "e". Por tanto si es posible utilizar la variable fatheduc para una alternativa que podemos utilizar como instrumento de la edu para explicar el log de los salarios.
+
+. *OTRO FORMA:
+
+. ivreg lsal ( educ = fatheduc )
+
+{txt}Instrumental variables (2SLS) regression
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       428
+{txt}{hline 13}{c +}{hline 34}   F(1, 426)       = {res}     2.84
+{txt}       Model {c |} {res} 20.8673606         1  20.8673606   {txt}Prob > F        ={res}    0.0929
+{txt}    Residual {c |} {res}  202.46008       426  .475258404   {txt}R-squared       ={res}    0.0934
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0913
+{txt}       Total {c |} {res} 223.327441       427  .523015084   {txt}Root MSE        =   {res} .68939
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        lsal{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} .0591735{col 26}{space 2} .0351418{col 37}{space 1}    1.68{col 46}{space 3}0.093{col 54}{space 4}-.0098994{col 67}{space 3} .1282463
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .4411034{col 26}{space 2} .4461018{col 37}{space 1}    0.99{col 46}{space 3}0.323{col 54}{space 4}-.4357312{col 67}{space 3} 1.317938
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 15 70}Instrumented:{space 2}educ{p_end}
+{p 0 15 70}Instruments:{space 3}fatheduc{p_end}
+{hline 78}
+
+{com}. *La educación a los salariosn aporta en un 5.9%, no es significativo, quiere decir que la variable instrumental "fatheduc" no es un instrumento fuerte para que pueda medir los salarios, debido a que la correlacion esta por debajo de 50%, ademas  la educacion explica solo en un 9% al salario.
+
+. *PREGUNTA 1B
+
+. *las dos ecuaciones estructurales estan SOBRESTIMADAS
+
+. *PREGUNTA 1C
+
+. reg W lsal educ edad nniños inno
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       428
+{txt}{hline 13}{c +}{hline 34}   F(5, 422)       = {res}     3.16
+{txt}       Model {c |} {res} 9290528.56         5  1858105.71   {txt}Prob > F        ={res}    0.0082
+{txt}    Residual {c |} {res}  248020491       422  587726.283   {txt}R-squared       ={res}    0.0361
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0247
+{txt}       Total {c |} {res}  257311020       427   602601.92   {txt}Root MSE        =   {res} 766.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           W{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}lsal {c |}{col 14}{res}{space 2}-2.046796{col 26}{space 2} 54.88015{col 37}{space 1}   -0.04{col 46}{space 3}0.970{col 54}{space 4}-109.9193{col 67}{space 3} 105.8257
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} -6.62187{col 26}{space 2} 18.11627{col 37}{space 1}   -0.37{col 46}{space 3}0.715{col 54}{space 4}-42.23123{col 67}{space 3} 28.98749
+{txt}{space 8}edad {c |}{col 14}{res}{space 2} .5622541{col 26}{space 2} 5.140012{col 37}{space 1}    0.11{col 46}{space 3}0.913{col 54}{space 4}-9.540961{col 67}{space 3} 10.66547
+{txt}{space 6}nniños {c |}{col 14}{res}{space 2}-328.8584{col 26}{space 2} 101.4573{col 37}{space 1}   -3.24{col 46}{space 3}0.001{col 54}{space 4}-528.2831{col 67}{space 3}-129.4338
+{txt}{space 8}inno {c |}{col 14}{res}{space 2}-5.918459{col 26}{space 2} 3.683341{col 37}{space 1}   -1.61{col 46}{space 3}0.109{col 54}{space 4}-13.15844{col 67}{space 3} 1.321522
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1523.775{col 26}{space 2} 305.5755{col 37}{space 1}    4.99{col 46}{space 3}0.000{col 54}{space 4} 923.1352{col 67}{space 3} 2124.414
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg lsal W edad expe expe2
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       428
+{txt}{hline 13}{c +}{hline 34}   F(4, 423)       = {res}     5.44
+{txt}       Model {c |} {res} 10.9255938         4  2.73139844   {txt}Prob > F        ={res}    0.0003
+{txt}    Residual {c |} {res} 212.401847       423  .502132026   {txt}R-squared       ={res}    0.0489
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0399
+{txt}       Total {c |} {res} 223.327441       427  .523015084   {txt}Root MSE        =   {res} .70861
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        lsal{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 11}W {c |}{col 14}{res}{space 2}-.0000812{col 26}{space 2} .0000467{col 37}{space 1}   -1.74{col 46}{space 3}0.083{col 54}{space 4}-.0001729{col 67}{space 3} .0000106
+{txt}{space 8}edad {c |}{col 14}{res}{space 2}-.0020369{col 26}{space 2} .0051754{col 37}{space 1}   -0.39{col 46}{space 3}0.694{col 54}{space 4}-.0122096{col 67}{space 3} .0081359
+{txt}{space 8}expe {c |}{col 14}{res}{space 2} .0520538{col 26}{space 2} .0142114{col 37}{space 1}    3.66{col 46}{space 3}0.000{col 54}{space 4} .0241201{col 67}{space 3} .0799876
+{txt}{space 7}expe2 {c |}{col 14}{res}{space 2}-.0010513{col 26}{space 2} .0004247{col 37}{space 1}   -2.48{col 46}{space 3}0.014{col 54}{space 4} -.001886{col 67}{space 3}-.0002166
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .9495198{col 26}{space 2} .2289887{col 37}{space 1}    4.15{col 46}{space 3}0.000{col 54}{space 4} .4994224{col 67}{space 3} 1.399617
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. *Solo se explican si son estadíticamente significativos
+
+. *PREGUNTA 1D
+
+. *primero estimanos lsal
+
+. *** Se quedo en el MINUTO 35:01 del video https://drive.google.com/file/d/1Xb_r4QVbW1ppxtZR5LIvAf54yEzDcjDJ/view
+
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\pregun01.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 3 Jan 2022, 18:43:52
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

@@ -1,0 +1,300 @@
+TERCER EXAMEN PRÁCTICO DE ECONOMETRÍA
+ACHALMA MENDOZA, Elmer Edison
+
+. use "C:\Users\achal\Downloads\3 examen práctico pool\Supply_y_Demand.dta" 
+
+. log using pract3
+--------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\achal\Downloads\3 examen práctico pool\pract3.smcl
+  log type:  smcl
+ opened on:   8 Jan 2022, 07:15:22
+
+. **PREGUNTA A
+
+*Condición de orden.
+Evaluando las condiciones de orden, para ello debemos identificar las varibles endógenas y exogena:
+
+VARAIBLES EXÓGENAS: PS DI PF 
+VARIABLES ENDÓGENAS: Q P
+
+Condiciones de orden de la primera ecuación:
+Número de variables excluidas den en la primera ecuación: 1
+Número de variables endógenas incluidas al lado derecho de la primera ecuación. 1
+
+Como el número de variables exógenas excluidas, en la primera ecuación es IGUAL al número de variables endógenas incluidas. Al lado derecho el primer ecuación, 
+por tanto, se concluye la primera ecuación. Está EXACTAMENTE IDENTIFICADO.
+
+
+Condición de orden de la segunda ecuación.
+Número de variables excluidas den en la primera ecuación. 2
+Número de variables endógenas incluidas al lado derecho de la primera ecuación. 1
+
+Como el número de variables exógenas excluidas, en la primera ecuación es MAYOR al número de variables endógenas incluidas. Al lado derecho el primer ecuación, 
+por tanto, se concluye la segunda ecuación. Está SOBRE IDENTIFICADA.
+
+
+. **PREGUNTA B
+
+. **MÉTODO MCI
+. *Para este método usamos las ecuaciones reducidas.
+. reg p ps pf di
+
+      Source |       SS           df       MS      Number of obs   =        30
+-------------+----------------------------------   F(3, 26)        =     69.07
+       Model |  9033.01906         3  3011.00635   Prob > F        =    0.0000
+    Residual |  1133.45369        26  43.5943729   R-squared       =    0.8885
+-------------+----------------------------------   Adj R-squared   =    0.8756
+       Total |  10166.4728        29  350.568026   Root MSE        =    6.6026
+
+------------------------------------------------------------------------------
+           p |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+          ps |   1.712487   .3507337     4.88   0.000     .9915438    2.433431
+          pf |   1.354409   .2982102     4.54   0.000      .741429    1.967389
+          di |   7.759804    1.75577     4.42   0.000     4.150768    11.36884
+       _cons |  -32.95381   7.971495    -4.13   0.000    -49.33945   -16.56817
+------------------------------------------------------------------------------
+
+. predict p_est
+(option xb assumed; fitted values)
+
+. reg q p_est ps di
+
+      Source |       SS           df       MS      Number of obs   =        30
+-------------+----------------------------------   F(3, 26)        =     19.16
+       Model |  424.909142         3  141.636381   Prob > F        =    0.0000
+    Residual |  192.227668        26  7.39337186   R-squared       =    0.6885
+-------------+----------------------------------   Adj R-squared   =    0.6526
+       Total |  617.136811        29  21.2805797   Root MSE        =    2.7191
+
+------------------------------------------------------------------------------
+           q |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       p_est |  -.3666775   .0906732    -4.04   0.000    -.5530589   -.1802962
+          ps |   1.293886    .196049     6.60   0.000     .8909019    1.696871
+          di |   4.957835    1.28123     3.87   0.001     2.324229    7.591441
+       _cons |  -4.390062   3.084427    -1.42   0.167    -10.73019    1.950068
+------------------------------------------------------------------------------
+
+. predict q_est
+(option xb assumed; fitted values)
+
+
+. **PREGUNTA C
+
+*Llevamos la ecuacion de la demanda en función de su precio:
+P=Q/a2-a1/a2-a3/a2*PS-a4/a2*DI-ed
+
+. reg p q ps di
+
+      Source |       SS           df       MS      Number of obs   =        30
+-------------+----------------------------------   F(3, 26)        =     34.95
+       Model |  8146.18316         3  2715.39439   Prob > F        =    0.0000
+    Residual |   2020.2896        26  77.7034462   R-squared       =    0.8013
+-------------+----------------------------------   Adj R-squared   =    0.7783
+       Total |  10166.4728        29  350.568026   Root MSE        =     8.815
+
+------------------------------------------------------------------------------
+           p |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           q |   .1991848   .4981431     0.40   0.693    -.8247631    1.223133
+          ps |   1.330692   .5954783     2.23   0.034     .1066686    2.554715
+          di |   12.58389   1.858965     6.77   0.000     8.762735    16.40505
+       _cons |  -14.30451   9.102456    -1.57   0.128    -33.01488    4.405853
+
+
+*Llevamos la ecuacion de la oferta en función de su precio:
+
+P=Q/b2-b1/b2-b3/b2*PF-es
+
+. reg p q pf
+
+      Source |       SS           df       MS      Number of obs   =        30
+-------------+----------------------------------   F(2, 27)        =    271.16
+       Model |  9684.32509         2  4842.16254   Prob > F        =    0.0000
+    Residual |   482.14767        27  17.8573211   R-squared       =    0.9526
+-------------+----------------------------------   Adj R-squared   =    0.9491
+       Total |  10166.4728        29  350.568026   Root MSE        =    4.2258
+
+------------------------------------------------------------------------------
+           p |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           q |    2.66509   .1722035    15.48   0.000     2.311758    3.018423
+          pf |   2.922851   .1491423    19.60   0.000     2.616836    3.228865
+       _cons |  -52.94449   5.055725   -10.47   0.000    -63.31798     -42.571
+------------------------------------------------------------------------------
+
+
+. **PREGUNTA D
+
+Teniendo ya las ecuaciones de oferta y demanda en función de sus precion, hacemos la regresión:
+
+****MC2E***
+Son las endógenas que actual como exógenas
+
+. ivregress 2sls p (q= ps di)
+
+Instrumental variables (2SLS) regression          Number of obs   =         30
+                                                  Wald chi2(1)    =      15.93
+                                                  Prob > chi2     =     0.0001
+                                                  R-squared       =     0.0354
+                                                  Root MSE        =      18.08
+
+------------------------------------------------------------------------------
+           p |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           q |   4.138825   1.036959     3.99   0.000     2.106423    6.171228
+       _cons |  -13.67182   19.42309    -0.70   0.481    -51.74037    24.39674
+------------------------------------------------------------------------------
+Instrumented:  q
+Instruments:   ps di
+
+. ivregress 2sls p (q=pf)
+
+Instrumental variables (2SLS) regression          Number of obs   =         30
+                                                  Wald chi2(1)    =       0.57
+                                                  Prob > chi2     =     0.4495
+                                                  R-squared       =          .
+                                                  Root MSE        =     97.233
+
+------------------------------------------------------------------------------
+           p |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           q |  -19.01887   25.14859    -0.76   0.449     -68.3092    30.27146
+       _cons |   413.7806   464.5404     0.89   0.373    -496.7018    1324.263
+------------------------------------------------------------------------------
+Instrumented:  q
+Instruments:   pf
+
+
+. **PREGUNTA E
+
+. ivreg2 p (q= pf) ps di, first
+
+First-stage regressions
+-----------------------
+
+
+First-stage regression of q:
+
+Statistics consistent for homoskedasticity only
+Number of obs =                     30
+------------------------------------------------------------------------------
+           q |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+          pf |  -.4966312   .1228085    -4.04   0.000    -.7490678   -.2441947
+          ps |   .6659558   .1444387     4.61   0.000     .3690577    .9628538
+          di |   2.112489   .7230588     2.92   0.007     .6262203    3.598758
+       _cons |    7.69336   3.282811     2.34   0.027     .9454456    14.44127
+------------------------------------------------------------------------------
+F test of excluded instruments:
+  F(  1,    26) =    16.35
+  Prob > F      =   0.0004
+Sanderson-Windmeijer multivariate F test of excluded instruments:
+  F(  1,    26) =    16.35
+  Prob > F      =   0.0004
+
+
+
+Summary results for first-stage regressions
+-------------------------------------------
+
+                                           (Underid)            (Weak id)
+Variable     | F(  1,    26)  P-val | SW Chi-sq(  1) P-val | SW F(  1,    26)
+q            |      16.35    0.0004 |       18.87   0.0000 |       16.35
+
+Stock-Yogo weak ID F test critical values for single endogenous regressor:
+                                   10% maximal IV size             16.38
+                                   15% maximal IV size              8.96
+                                   20% maximal IV size              6.66
+                                   25% maximal IV size              5.53
+Source: Stock-Yogo (2005).  Reproduced by permission.
+NB: Critical values are for Sanderson-Windmeijer F statistic.
+
+Underidentification test
+Ho: matrix of reduced form coefficients has rank=K1-1 (underidentified)
+Ha: matrix has rank=K1 (identified)
+Anderson canon. corr. LM statistic       Chi-sq(1)=11.58    P-val=0.0007
+
+Weak identification test
+Ho: equation is weakly identified
+Cragg-Donald Wald F statistic                                      16.35
+
+Stock-Yogo weak ID test critical values for K1=1 and L1=1:
+                                   10% maximal IV size             16.38
+                                   15% maximal IV size              8.96
+                                   20% maximal IV size              6.66
+                                   25% maximal IV size              5.53
+Source: Stock-Yogo (2005).  Reproduced by permission.
+
+Weak-instrument-robust inference
+Tests of joint significance of endogenous regressors B1 in main equation
+Ho: B1=0 and orthogonality conditions are valid
+Anderson-Rubin Wald test           F(1,26)=       20.63     P-val=0.0001
+Anderson-Rubin Wald test           Chi-sq(1)=     23.80     P-val=0.0000
+Stock-Wright LM S statistic        Chi-sq(1)=     13.27     P-val=0.0003
+
+Number of observations               N  =         30
+Number of regressors                 K  =          4
+Number of endogenous regressors      K1 =          1
+Number of instruments                L  =          4
+Number of excluded instruments       L1 =          1
+
+IV (2SLS) estimation
+--------------------
+
+Estimates efficient for homoskedasticity only
+Statistics consistent for homoskedasticity only
+
+                                                      Number of obs =       30
+                                                      F(  3,    26) =    16.65
+                                                      Prob > F      =   0.0000
+Total (centered) SS     =  10166.47276                Centered R2   =   0.5375
+Total (uncentered) SS   =  128195.4787                Uncentered R2 =   0.9633
+Residual SS             =  4701.880452                Root MSE      =    12.52
+
+------------------------------------------------------------------------------
+           p |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           q |  -2.727192    1.13854    -2.40   0.017     -4.95869   -.4956942
+          ps |   3.528677   1.078955     3.27   0.001     1.413963     5.64339
+          di |   13.52097   2.655544     5.09   0.000     8.316197    18.72574
+       _cons |  -11.97254     12.947    -0.92   0.355     -37.3482    13.40312
+------------------------------------------------------------------------------
+Underidentification test (Anderson canon. corr. LM statistic):          11.584
+                                                   Chi-sq(1) P-val =    0.0007
+------------------------------------------------------------------------------
+Weak identification test (Cragg-Donald Wald F statistic):               16.354
+Stock-Yogo weak ID test critical values: 10% maximal IV size             16.38
+                                         15% maximal IV size              8.96
+                                         20% maximal IV size              6.66
+                                         25% maximal IV size              5.53
+Source: Stock-Yogo (2005).  Reproduced by permission.
+------------------------------------------------------------------------------
+Sargan statistic (overidentification test of all instruments):           0.000
+                                                 (equation exactly identified)
+------------------------------------------------------------------------------
+Instrumented:         q
+Included instruments: ps di
+Excluded instruments: pf
+------------------------------------------------------------------------------
+
+. ***Si alguna de las variables del cuadro  es mayor que 16.354 los instrumentos que estamos utilizando son débiles, por lo que en el cuadro nos dice que se excluye pf porque es un instrumentos muy 
+> débiles para explicar la producción
+
+
+. **PREGUNTA F
+
+
+
+. **PREGUNTA G
+
+
+
+
+
+
+
+
+

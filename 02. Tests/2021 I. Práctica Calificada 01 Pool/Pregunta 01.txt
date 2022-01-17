@@ -1,0 +1,224 @@
+      name:  <unnamed>
+       log:  C:\Users\achal\OneDrive\Documentos\Classroom\Econometría\02. Tests\EXAMEN DE PRÁCTICA DE ECONOMETRÍA I\pregunta01.smcl
+  log type:  smcl
+ opened on:  11 Dec 2021, 07:07:36
+
+
+ACHALMA MENDOZA, ELMER EDISON 
+
+
+. tsset time, yearly
+        time variable:  time, 1975 to 2727
+                delta:  1 year
+
+. gen logsal=log(sal)
+(325 missing values generated)
+
+. gen inno=faminc+huswage
+
+. drop inno
+
+. gen inno= (faminc- hushrs* huswage)/1000
+
+. gen niñosT= nniños+ nniños2
+
+. drop inno
+
+.  gen salmarid= huswage* hushrs
+
+. gen inno=( faminc- salmarid)/1000
+
+. gen exp2= expe* expe
+
+
+
+PREGUNTA 1.A
+
+
+. reg logsal W educ expe exp2
+
+      Source |       SS           df       MS      Number of obs   =       428
+-------------+----------------------------------   F(4, 423)       =     20.16
+       Model |  35.7620024         4   8.9405006   Prob > F        =    0.0000
+    Residual |  187.565438       423  .443417112   R-squared       =    0.1601
+-------------+----------------------------------   Adj R-squared   =    0.1522
+       Total |  223.327441       427  .523015084   Root MSE        =     .6659
+
+------------------------------------------------------------------------------
+      logsal |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           W |  -.0000565   .0000438    -1.29   0.197    -.0001426    .0000295
+        educ |   .1062139   .0141698     7.50   0.000     .0783619    .1340659
+        expe |   .0447035    .013387     3.34   0.001     .0183902    .0710168
+        exp2 |  -.0008585   .0003946    -2.18   0.030    -.0016342   -.0000828
+       _cons |  -.4619955   .2038477    -2.27   0.024    -.8626761   -.0613149
+------------------------------------------------------------------------------
+
+. **Hacemos la correlación***
+
+. predict residuo1, resid
+(325 missing values generated)
+
+. cor educ fatheduc
+(obs=753)
+
+             |     educ fatheduc
+-------------+------------------
+        educ |   1.0000
+    fatheduc |   0.4425   1.0000
+
+
+. cor fatheduc residuo1
+(obs=428)
+
+             | fatheduc residuo1
+-------------+------------------
+    fatheduc |   1.0000
+    residuo1 |  -0.0526   1.0000
+
+
+. ***la variable fatheduc no es buen indicador del salario porque se observa qu
+> e no hay correlación
+
+
+PREGUNTA 1.B
+
+. ****CONDICION DE ORDEN*****
+
+
+. ***Ahora evaluamos las condiciones de orden
+
+. **primero identificamos las variabñes endogenas y exogenas del modelo
+
+. **VARIABLES ENDOGENAS: W LOG(SAL)
+
+. **VARIABLES EXÓGENAS: EDUC EDAD NIÑOST INNO EXPE EXP2
+
+. **Hacemos la condicion de orden de la primera ecuación
+
+. **hacemos la condicion de orden para la primera la ecuación
+
+. **Identificamos el níumero de variables excluidas en la primera ecuación: 2(e
+> xpe exp2)
+
+. **Número de variables endógenas incluidas al lado derecho de la 1ra ECUA : 1(
+> logsal)
+
+. ****Como el número de variables exógenas escritas en la primera ecuación es mayor el número de variables endógenas. Incluidas uno al lado derecho de la primera ecuación.
+
+. *****Se concluye que la ecuación de las horas de trabajo está Sobreidentifica
+> da.
+
+. **Hacemos la CONDICIÓN DE ORDEN de Orden de la Segunda Ecuación
+
+. **VARIABLES ENDOGENAS: W
+
+. **VARIABLES EXOGENAS: EDAD NIÑOS UNO 
+
+Numero de variables exogenas excluidas en la segunda ecuación: SON 3 (EDAD NIÑOST INNO)
+Número de variables endógenas incluidas al lado derecho de la segunda ecuación : ES SOLO 1 (W)
+
+Como el número de variables exógenas exluidas en la primera ecuación es mayor al numero de variables endogenas incluidad (1) lado derecho de la primera ecuación
+
+. ***PREGUNTA 1.C
+
+. reg W logsal educ edad niñosT inno
+
+      Source |       SS           df       MS      Number of obs   =       428
+-------------+----------------------------------   F(5, 422)       =     19.58
+       Model |  48447199.4         5  9689439.89   Prob > F        =    0.0000
+    Residual |   208863820       422  494937.963   R-squared       =    0.1883
+-------------+----------------------------------   Adj R-squared   =    0.1787
+       Total |   257311020       427   602601.92   Root MSE        =    703.52
+
+------------------------------------------------------------------------------
+           W |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      logsal |   -160.832   53.26826    -3.02   0.003    -265.5362   -56.12787
+        educ |    -39.957   16.02258    -2.49   0.013      -71.451   -8.462999
+        edad |  -11.97827   5.050086    -2.37   0.018    -21.90472   -2.051809
+      niñosT |  -129.4163    27.5554    -4.70   0.000    -183.5793    -75.2534
+        inno |   41.92483   5.015904     8.36   0.000     32.06556     51.7841
+       _cons |   2336.041   316.0541     7.39   0.000     1714.804    2957.277
+------------------------------------------------------------------------------
+
+
+Las ecuaciones estructurales no se pueden regesionar con MCO
+
+
+PREGUNTA 1.D
+
+. reg W educ edad niñosT inno expe exp2
+
+      Source |       SS           df       MS      Number of obs   =       753
+-------------+----------------------------------   F(6, 746)       =     65.24
+       Model |   196478460         6    32746410   Prob > F        =    0.0000
+    Residual |   374431264       746  501918.584   R-squared       =    0.3441
+-------------+----------------------------------   Adj R-squared   =    0.3389
+       Total |   570909724       752  759188.463   Root MSE        =    708.46
+
+------------------------------------------------------------------------------
+           W |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        educ |  -12.83213   11.78045    -1.09   0.276     -35.9589    10.29464
+        edad |   -28.5179   3.922265    -7.27   0.000    -36.21789   -20.81791
+      niñosT |  -72.43067   21.01557    -3.45   0.001    -113.6874   -31.17398
+        inno |   45.29972   3.791727    11.95   0.000       37.856    52.74345
+        expe |   64.85261   9.372144     6.92   0.000      46.4537    83.25153
+        exp2 |  -.7543596   .3055313    -2.47   0.014    -1.354163    -.154556
+       _cons |    1367.46   252.4684     5.42   0.000     871.8271    1863.093
+------------------------------------------------------------------------------
+
+. reg logsal educ edad niñosT inno expe exp2
+
+      Source |       SS           df       MS      Number of obs   =       428
+-------------+----------------------------------   F(6, 421)       =     22.52
+       Model |  54.2532783         6  9.04221305   Prob > F        =    0.0000
+    Residual |  169.074163       421  .401601336   R-squared       =    0.2429
+-------------+----------------------------------   Adj R-squared   =    0.2321
+       Total |  223.327441       427  .523015084   Root MSE        =    .63372
+
+------------------------------------------------------------------------------
+      logsal |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        educ |   .0859562   .0138403     6.21   0.000     .0587516    .1131609
+        edad |  -.0052156   .0049534    -1.05   0.293    -.0149521    .0045209
+      niñosT |  -.0109696   .0255954    -0.43   0.668    -.0612803    .0393412
+        inno |   .0295036   .0042864     6.88   0.000     .0210782    .0379291
+        expe |   .0346933   .0127112     2.73   0.007      .009708    .0596787
+        exp2 |  -.0006473   .0003812    -1.70   0.090    -.0013966    .0001021
+       _cons |  -.2162499   .3014169    -0.72   0.473    -.8087195    .3762196
+------------------------------------------------------------------------------
+
+
+
+PREGUNTA 1.F
+
+
+. reg logsal W_est  educ expe exp2
+
+      Source |       SS           df       MS      Number of obs   =       428
+-------------+----------------------------------   F(4, 423)       =     33.93
+       Model |  54.2532772         4  13.5633193   Prob > F        =    0.0000
+    Residual |  169.074164       423  .399702515   R-squared       =    0.2429
+-------------+----------------------------------   Adj R-squared   =    0.2358
+       Total |  223.327441       427  .523015084   Root MSE        =    .63222
+
+------------------------------------------------------------------------------
+      logsal |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       W_est |          1   .1441676     6.94   0.000     .7166258    1.283374
+        educ |   4.90e-09      .0205     0.00   1.000    -.0402946    .0402947
+        expe |   1.88e-09   .0138614     0.00   1.000    -.0272457    .0272457
+        exp2 |  -4.13e-11    .000391    -0.00   1.000    -.0007685    .0007685
+       _cons |  -3.27e-08   .2029121    -0.00   1.000    -.3988417    .3988416
+------------------------------------------------------------------------------
+
+
+. log close
+      name:  <unnamed>
+       log:  C:\Users\achal\OneDrive\Documentos\Classroom\Econometría\02. Tests
+> \A. EXAMEEEEEEE\pregunta01.smcl
+  log type:  smcl
+ closed on:  11 Dec 2021, 08:45:10
+-------------------------------------------------------

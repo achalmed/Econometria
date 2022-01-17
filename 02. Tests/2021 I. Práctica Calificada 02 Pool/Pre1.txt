@@ -1,0 +1,213 @@
+. use "C:\Users\achal\Downloads\Segundo examen practico\Examen 02.dta" 
+
+. log using respuesta
+--------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\achal\Downloads\Segundo examen practico\respuesta.smcl
+  log type:  smcl
+ opened on:   3 Jan 2022, 20:07:09
+
+. describe
+
+Contains data from C:\Users\achal\Downloads\Segundo examen practico\Examen 02.dta
+  obs:            81                          
+ vars:             4                          3 Jan 2022 18:14
+--------------------------------------------------------------------------------------------------------------------------------------------------
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------------------------------------------------------------------------
+pib             float   %9.0g                 Producto bruto Interno Real
+inflacion       float   %9.0g                 Inflacion Anual
+fondo           float   %9.0g                 Tasa de fondos
+bono            float   %9.0g                 Tasa de bonos a 3 años
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+. gen time=y(1940)+_n-1
+
+. tsset time, yearly
+        time variable:  time, 1940 to 2020
+                delta:  1 year
+** PREGUNTA 1A
+
+. *Hacemos la gráficas de las variables con sus rezagos
+
+. tsline pib l.pib
+
+. tsline inflacion l.inflacion
+
+. tsline fondo l.fondo
+
+. tsline bono l.bono
+
+
+. ** PREGUNTA 1B. Realice pruebas de raices unitarias para estacionalidad teniendo en cuenta lo siguiente: la prueba de Dickey-Fuller test entre sus tres var
+> iacio es y teniendo en cuenta aumentado y modificado, evalue a traves de R2, Phillips-Perron test y Kwiatkowski-Phillips-Schamidt-shin, para est
+> o inicie  escribiendo las ecuaciones de prueba y las hipotesis para estos tres casos y luego describe el procedimiento de prueba.
+
+
+. *1. Evaluando Dickey Fuller aumentado (raices unitarias)
+
+. *H0 : Raíz unitaria (No estacionaria)
+
+. *H1 : No existe raíz unitaria (estacionaria)
+
+. *Hacemos la Dickey-Fuller test de cada variable:
+
+. dfuller inflacion, lags(1)
+
+Augmented Dickey-Fuller test for unit root         Number of obs   =        79
+
+                               ---------- Interpolated Dickey-Fuller ---------
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+------------------------------------------------------------------------------
+ Z(t)             -2.693            -3.539            -2.907            -2.588
+------------------------------------------------------------------------------
+MacKinnon approximate p-value for Z(t) = 0.0753
+
+. dfuller fondo, lags(1)
+
+Augmented Dickey-Fuller test for unit root         Number of obs   =        79
+
+                               ---------- Interpolated Dickey-Fuller ---------
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+------------------------------------------------------------------------------
+ Z(t)             -2.090            -3.539            -2.907            -2.588
+------------------------------------------------------------------------------
+MacKinnon approximate p-value for Z(t) = 0.2484
+
+. dfuller bono, lags(1)
+
+Augmented Dickey-Fuller test for unit root         Number of obs   =        79
+
+                               ---------- Interpolated Dickey-Fuller ---------
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+------------------------------------------------------------------------------
+ Z(t)             -1.976            -3.539            -2.907            -2.588
+------------------------------------------------------------------------------
+MacKinnon approximate p-value for Z(t) = 0.2970
+
+. *se sabe que los lasg son el numero de rezagos
+. *rechazmos la H0 a un 90% y 95% de nivel de confianza porque el t cae en la region de rechazo
+
+
+. *2. Evaluando Dickey Fuller modifcado (mínimos cuadrados generalizados)
+
+. *H0 : No estacionaria
+. *H1 : Estacionaria
+
+. dfgls pib, maxlag(4)
+ 
+DF-GLS for pib                                           Number of obs =    76
+ 
+               DF-GLS tau      1% Critical       5% Critical      10% Critical
+  [lags]     Test Statistic        Value             Value             Value
+------------------------------------------------------------------------------
+    4            -0.594           -3.652            -2.992            -2.705
+    3            -0.432           -3.652            -3.019            -2.730
+    2            -0.431           -3.652            -3.044            -2.752
+    1             0.278           -3.652            -3.066            -2.772
+ 
+Opt Lag (Ng-Perron seq t) =  2 with RMSE  37.57436
+Min SC   =  7.423594 at lag  2 with RMSE  37.57436
+Min MAIC =  7.310911 at lag  2 with RMSE  37.57436
+
+
+*5. Evaluando Phillips Perron (test raiz unitaria)
+
+. *H0 : Raiz unitaria
+
+. *H1 : No existe raíz unitaria
+
+
+
+. pperron pib, lags(4)
+
+Phillips-Perron test for unit root                 Number of obs   =        80
+                                                   Newey-West lags =         4
+
+                               ---------- Interpolated Dickey-Fuller ---------
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+------------------------------------------------------------------------------
+ Z(rho)            0.898           -19.440           -13.540           -10.880
+ Z(t)              4.178            -3.538            -2.906            -2.588
+------------------------------------------------------------------------------
+MacKinnon approximate p-value for Z(t) = 1.0000
+
+
+. pperron inflacion , lags(4)
+
+Phillips-Perron test for unit root                 Number of obs   =        80
+                                                   Newey-West lags =         4
+
+                               ---------- Interpolated Dickey-Fuller ---------
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+------------------------------------------------------------------------------
+ Z(rho)          -11.127           -19.440           -13.540           -10.880
+ Z(t)             -2.400            -3.538            -2.906            -2.588
+------------------------------------------------------------------------------
+MacKinnon approximate p-value for Z(t) = 0.1418
+
+
+
+
+. pperron fondo, lags(4)
+
+Phillips-Perron test for unit root                 Number of obs   =        80
+                                                   Newey-West lags =         4
+
+                               ---------- Interpolated Dickey-Fuller ---------
+                  Test         1% Critical       5% Critical      10% Critical
+               Statistic           Value             Value             Value
+------------------------------------------------------------------------------
+ Z(rho)           -4.811           -19.440           -13.540           -10.880
+ Z(t)             -1.608            -3.538            -2.906            -2.588
+------------------------------------------------------------------------------
+MacKinnon approximate p-value for Z(t) = 0.4796
+
+
+
+.  *Evualuando a traves del r2 y el durwin watson
+
+. reg pib inflacion fondo bono
+
+      Source |       SS           df       MS      Number of obs   =        81
+-------------+----------------------------------   F(3, 77)        =     62.09
+       Model |   302724890         3   100908297   Prob > F        =    0.0000
+    Residual |   125131270        77  1625081.43   R-squared       =    0.7075
+-------------+----------------------------------   Adj R-squared   =    0.6961
+       Total |   427856160        80  5348202.01   Root MSE        =    1274.8
+
+------------------------------------------------------------------------------
+         pib |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+   inflacion |   115.9313   172.8533     0.67   0.504    -228.2635    460.1262
+       fondo |   319.2259   180.6879     1.77   0.081    -40.56964    679.0214
+        bono |  -1319.674   205.5559    -6.42   0.000    -1728.988   -910.3596
+       _cons |   13435.99   527.2058    25.49   0.000     12386.19    14485.79
+------------------------------------------------------------------------------
+
+.  estat dwatson
+
+Durbin-Watson d-statistic(  4,    81) =   .256245
+
+. *si el r2 es mayor dw, entonces hay problemas de estacionalidad
+
+. *por ejemplo en este caso el r2 es 0.7075 mayor a dw es 0.2562
+
+
+
+
+. log close
+      name:  <unnamed>
+       log:  C:\Users\achal\Downloads\Segundo examen practico\respuesta.smcl
+  log type:  smcl
+ closed on:   3 Jan 2022, 20:53:39
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+. 

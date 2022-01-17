@@ -1,0 +1,215 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\OneDrive\Documentos\Classroom\Econometría\01. Lessons\Practice 02\cambiosestruc.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 9 Dec 2021, 23:22:05
+
+{com}. . gen time=q(1966q1)+_n-1
+
+. .  tsset time, quarterly
+{res}{txt}{col 9}time variable:  {res}{col 25}time, 1966q1 to 2018q4
+{txt}{col 17}delta:  {res}1 quarter
+
+{com}. tsline PBI
+{res}
+{com}. varsoc PBI, maxlag(4)
+
+{txt}{col 4}Selection-order criteria
+{col 4}Sample:  {res}1967q1 - 2018q4 {txt}{col 49}Number of obs {col 68}= {res}      208
+{col 3}{text}{c TLC}{hline 4}{c TT}{hline 9}{hline 8}{hline 1}{hline 5}{hline 7}{hline 8}{hline 1}{hline 9}{hline 1}{hline 9}{hline 1}{hline 9}{hline 1}{hline 1}{c TRC}
+{col 3}{text}{c |}lag{col 8}{c |}    LL  {col 18}   LR  {col 27}  df{col 32}   p  {col 39}   FPE {col 48}    AIC {col 58}   HQIC {col 68}   SBIC {col 79}{c |}
+{res}{col 3}{text}{c LT}{hline 4}{c +}{hline 9}{hline 8}{hline 1}{hline 5}{hline 7}{hline 8}{hline 1}{hline 9}{hline 1}{hline 9}{hline 1}{hline 9}{hline 1}{hline 1}{c RT}
+{col 3}{text}{c |}  0{col 8}{c |}{result}{space 1}-2062.72{col 18}{col 27}{col 32}{col 39} 2.4e+07{col 48}{space 1} 19.8434{col 58}{space 1} 19.8499{col 68}{space 1} 19.8595{col 79}{text}{c |}
+{res}{col 3}{text}{c |}  1{col 8}{c |}{result}{space 1}-1136.97{col 18}{space 1} 1851.5{col 27}   1{col 32} 0.000{col 39} 3340.17{col 48}{space 1} 10.9517{col 58}{space 1} 10.9646{col 68}{space 1} 10.9837{col 79}{text}{c |}
+{res}{col 3}{text}{c |}  2{col 8}{c |}{result}{space 1}-1105.31{col 18}{space 1}  63.33{col 27}   1{col 32} 0.000{col 39} 2487.22{col 48}{space 1} 10.6568{col 58}{space 1} 10.6763{col 68}{space 1} 10.7049{col 79}{text}{c |}
+{res}{col 3}{text}{c |}  3{col 8}{c |}{result}{space 1}-1101.21{col 18}{space 1} 8.1959{col 26}*{col 27}   1{col 32} 0.004{col 39} 2414.23{col 47}*{col 48}{space 1}  10.627{col 57}*{col 58}{space 1}  10.653{col 67}*{col 68}{space 1} 10.6912{col 77}*{col 79}{text}{c |}
+{res}{col 3}{text}{c |}  4{col 8}{c |}{result}{space 1}-1101.08{col 18}{space 1} .25096{col 27}   1{col 32} 0.616{col 39} 2434.63{col 48}{space 1} 10.6354{col 58}{space 1} 10.6679{col 68}{space 1} 10.7156{col 79}{text}{c |}
+{res}{col 3}{text}{c BLC}{hline 4}{c BT}{hline 9}{hline 8}{hline 1}{hline 5}{hline 7}{hline 8}{hline 1}{hline 9}{hline 1}{hline 9}{hline 1}{hline 9}{hline 1}{hline 1}{c BRC}
+{res}{txt}{space 3}Endogenous:  PBI
+{space 3} Exogenous:  _cons
+
+{com}. reg PBI L.PBI L2.PBI L3.PBI
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       209
+{txt}{hline 13}{c +}{hline 34}   F(3, 205)       > {res} 99999.00
+{txt}       Model {c |} {res} 5.0334e+09         3  1.6778e+09   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 483663.331       205  2359.33332   {txt}R-squared       ={res}    0.9999
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9999
+{txt}       Total {c |} {res} 5.0339e+09       208  24201444.5   {txt}Root MSE        =   {res} 48.573
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         PBI{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}PBI {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} 1.420675{col 26}{space 2} .0685121{col 37}{space 1}   20.74{col 46}{space 3}0.000{col 54}{space 4} 1.285596{col 67}{space 3} 1.555754
+{txt}{space 9}L2. {c |}{col 14}{res}{space 2} -.218586{col 26}{space 2} .1196675{col 37}{space 1}   -1.83{col 46}{space 3}0.069{col 54}{space 4}-.4545228{col 67}{space 3} .0173509
+{txt}{space 9}L3. {c |}{col 14}{res}{space 2}-.1992694{col 26}{space 2}  .069155{col 37}{space 1}   -2.88{col 46}{space 3}0.004{col 54}{space 4}-.3356158{col 67}{space 3}-.0629231
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 12.61324{col 26}{space 2} 5.610187{col 37}{space 1}    2.25{col 46}{space 3}0.026{col 54}{space 4} 1.552175{col 67}{space 3}  23.6743
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg PBI L.PBI L3.PBI
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       209
+{txt}{hline 13}{c +}{hline 34}   F(2, 206)       > {res} 99999.00
+{txt}       Model {c |} {res} 5.0334e+09         2  2.5167e+09   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 491535.267       206  2386.09353   {txt}R-squared       ={res}    0.9999
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9999
+{txt}       Total {c |} {res} 5.0339e+09       208  24201444.5   {txt}Root MSE        =   {res} 48.848
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         PBI{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}PBI {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} 1.311761{col 26}{space 2} .0339343{col 37}{space 1}   38.66{col 46}{space 3}0.000{col 54}{space 4} 1.244858{col 67}{space 3} 1.378664
+{txt}{space 9}L3. {c |}{col 14}{res}{space 2}-.3089648{col 26}{space 2} .0344858{col 37}{space 1}   -8.96{col 46}{space 3}0.000{col 54}{space 4}-.3769552{col 67}{space 3}-.2409743
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 12.74699{col 26}{space 2} 5.641433{col 37}{space 1}    2.26{col 46}{space 3}0.025{col 54}{space 4} 1.624644{col 67}{space 3} 23.86934
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. ****1. sin conocer el periodo de cambio***
+
+. estat sbsingle
+{res}{txt}{hline 4}{c +}{hline 3} 1 {hline 3}{c +}{hline 3} 2 {hline 3}{c +}{hline 3} 3 {hline 3}{c +}{hline 3} 4 {hline 3}{c +}{hline 3} 5 
+{res}..................................................{txt}    50
+{res}..................................................{txt}   100
+{res}.............................................
+
+{txt}Test for a structural break: Unknown break date
+
+{col 30}Number of obs = {res}       209
+
+{txt}Full sample:{col 30}{res}1966q4{col 36} - 2018q4
+{txt}Trimmed sample:{col 30}{res}1974q4 - 2011q1
+{txt}Estimated break date: {col 30}{res}2009q3
+{txt}Ho: No structural break
+
+{res}{col 1}{text}     Test{col 16}      Statistic{col 31}          p-value
+{res}{col 1}{text}{hline 15}{hline 15}{hline 17}
+{col 1}{text}     swald{col 16}       15.4378{col 31}          0.0265
+{res}{col 1}{text}{hline 15}{hline 15}{hline 17}
+{p 0 35 0}{txt}Exogenous variables: {space 10}L.PBI L3.PBI{p_end}
+{p 0 35 0}{txt}Coefficients included in test: L.PBI L3.PBI _cons{p_end}
+{res}
+{com}. estat sbsingle, slr
+{res}{txt}{hline 4}{c +}{hline 3} 1 {hline 3}{c +}{hline 3} 2 {hline 3}{c +}{hline 3} 3 {hline 3}{c +}{hline 3} 4 {hline 3}{c +}{hline 3} 5 
+{res}..................................................{txt}    50
+{res}..................................................{txt}   100
+{res}.............................................
+
+{txt}Test for a structural break: Unknown break date
+
+{col 30}Number of obs = {res}       209
+
+{txt}Full sample:{col 30}{res}1966q4{col 36} - 2018q4
+{txt}Trimmed sample:{col 30}{res}1974q4 - 2011q1
+{txt}Estimated break date: {col 30}{res}2009q3
+{txt}Ho: No structural break
+
+{res}{col 1}{text}     Test{col 16}      Statistic{col 31}          p-value
+{res}{col 1}{text}{hline 15}{hline 15}{hline 17}
+{col 1}{text}       slr{col 16}       15.3187{col 31}          0.0278
+{res}{col 1}{text}{hline 15}{hline 15}{hline 17}
+{p 0 35 0}{txt}Exogenous variables: {space 10}L.PBI L3.PBI{p_end}
+{p 0 35 0}{txt}Coefficients included in test: L.PBI L3.PBI _cons{p_end}
+{res}
+{com}. **conociendo el periodo de cambio**
+
+. estat sbknown, break(tq(2009q3))
+
+{txt}Wald test for a structural break: Known break date
+
+{col 35}Number of obs {col 50}= {res}       209
+{txt:Sample}:{col 13}{res: 1966q4 - 2018q4} 
+{txt}Break date: {col 14}{res}2009q3
+{txt}Ho: No structural break
+
+{col 14}chi2({res}3{txt}){col 27}={res}   15.4378
+{txt}{col 14}Prob > chi2{col 27}={res}    0.0015
+
+{p 0 35 0}{txt}Exogenous variables: {space 10}L.PBI L3.PBI{p_end}
+{p 0 35 0}{txt}Coefficients included in test: L.PBI L3.PBI _cons{p_end}
+
+{com}. **generamos la variable de cambio estructural**
+
+. gen cambio=0
+
+. replace cambio=1 if time>tq(2009,q2)
+{txt}(38 real changes made)
+
+{com}. reg PBI cambio L.PBI L3.PBI
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       209
+{txt}{hline 13}{c +}{hline 34}   F(3, 205)       > {res} 99999.00
+{txt}       Model {c |} {res} 5.0334e+09         3  1.6778e+09   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 491054.669       205  2395.38863   {txt}R-squared       ={res}    0.9999
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9999
+{txt}       Total {c |} {res} 5.0339e+09       208  24201444.5   {txt}Root MSE        =   {res} 48.943
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         PBI{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}cambio {c |}{col 14}{res}{space 2}-6.463063{col 26}{space 2} 14.42897{col 37}{space 1}   -0.45{col 46}{space 3}0.655{col 54}{space 4}-34.91127{col 67}{space 3} 21.98514
+{txt}{space 12} {c |}
+{space 9}PBI {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} 1.310369{col 26}{space 2}  .034142{col 37}{space 1}   38.38{col 46}{space 3}0.000{col 54}{space 4} 1.243055{col 67}{space 3} 1.377684
+{txt}{space 9}L3. {c |}{col 14}{res}{space 2}-.3071388{col 26}{space 2} .0347926{col 37}{space 1}   -8.83{col 46}{space 3}0.000{col 54}{space 4} -.375736{col 67}{space 3}-.2385417
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2}  11.6171{col 26}{space 2} 6.189738{col 37}{space 1}    1.88{col 46}{space 3}0.062{col 54}{space 4}-.5866126{col 67}{space 3} 23.82081
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. chowreg PBI time, dum(174) type(3)
+{err}command {bf}chowreg{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. findit chowreg
+
+. chowreg PBI time, dum(174) type(3)
+
+{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}
+{txt}{bf:{err:* Structural Change Regression *}}
+{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       212
+{txt}{hline 13}{c +}{hline 34}   F(3, 208)       = {res}  2551.80
+{txt}       Model {c |} {res} 4.9869e+09         3  1.6623e+09   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  135496609       208  651426.006   {txt}R-squared       ={res}    0.9735
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9732
+{txt}       Total {c |} {res} 5.1224e+09       211  24276924.8   {txt}Root MSE        =   {res} 807.11
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         PBI{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2} 62.94844{col 26}{space 2} 1.218166{col 37}{space 1}   51.67{col 46}{space 3}0.000{col 54}{space 4}  60.5469{col 67}{space 3} 65.34997
+{txt}{space 10}D0 {c |}{col 14}{res}{space 2}-7403.467{col 26}{space 2} 2592.507{col 37}{space 1}   -2.86{col 46}{space 3}0.005{col 54}{space 4}-12514.43{col 67}{space 3}-2292.508
+{txt}{space 5}Dx_time {c |}{col 14}{res}{space 2} 50.08241{col 26}{space 2} 12.00181{col 37}{space 1}    4.17{col 46}{space 3}0.000{col 54}{space 4} 26.42162{col 67}{space 3}  73.7432
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2831.456{col 26}{space 2} 147.8613{col 37}{space 1}  -19.15{col 46}{space 3}0.000{col 54}{space 4}-3122.955{col 67}{space 3}-2539.957
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{p 0 7}{space 1}{text:( 1)}{space 1} D0 = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} Dx_time = 0{p_end}
+
+{txt}       F(  2,   208) ={res}  161.91
+{txt}{col 13}Prob > F ={res}    0.0000
+{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}
+{txt}{bf:{err:* Structural Change Tests:  Y = X + D0 + DX}}
+{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}{bf:{err:=}}
+{col 3}{bf:Ho: no Structural Change}
+
+- N1: 1st Period Obs{col 28}={res}  174
+{txt}- N2: 2nd Period Obs{col 28}={res}   38
+{txt}- Chow Test   [K, N-2*K]{col 28}={res}  161.9109{col 45}{txt}P-Value > F(2 , 208){col 67}{res}0.0000
+{txt}- Fisher Test [N2,(N1-K)]{col 28}={res}    7.4426{col 45}{txt}P-Value > F(38 , 172){col 67}{res}0.0000
+{txt}- Wald Test{col 28}={res}  330.0490{col 45}{txt}P-Value > Chi2(38){col 67}{res}0.0000
+{txt}- Likelihood Ratio Test{col 28}={res}  199.0193{col 45}{txt}P-Value > Chi2(38){col 67}{res}0.0000
+{txt}- Lagrange Multiplier Test{col 28}={res}  129.0850{col 45}{txt}P-Value > Chi2(38){col 67}{res}0.0000
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\OneDrive\Documentos\Classroom\Econometría\01. Lessons\Practice 02\cambiosestruc.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}10 Dec 2021, 00:18:01
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

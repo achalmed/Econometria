@@ -1,0 +1,241 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\Stata16\modKlein.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}10 Dec 2021, 17:24:16
+
+{com}. import excel "C:\Users\achal\OneDrive\Documentos\Classroom\Econometría\01. Lessons\Practice 06\Table 20_5.xlsx", sheet("Table 20_5") firstrow
+{res}{text}(10 vars, 22 obs)
+
+{com}. gen time=y(1920) +_n-1
+
+. tsset time, yearl
+{res}{txt}{col 9}time variable:  {res}{col 25}time, 1920 to 1941
+{txt}{col 17}delta:  {res}1 year
+
+{com}. tsset time, yearly
+{res}{txt}{col 9}time variable:  {res}{col 25}time, 1920 to 1941
+{txt}{col 17}delta:  {res}1 year
+
+{com}. br
+
+. gen W2=Wp+Wg
+
+. gen A=_n-12
+
+. gen K=F.K1
+{txt}(1 missing value generated)
+
+{com}.  reg3 (C=P L.P W2)(I=P L.P L.K)(Wp= X L.X A), endog(P X W2) exog(G T Wg) 2sls
+{res}
+{txt}Two-stage least-squares regression
+{hline 74}
+Equation             Obs   Parms        RMSE    "R-sq"     F-Stat        P
+{hline 74}
+{res}C                     21       3    1.135658    0.9767     225.93   0.0000
+I                     21       3    1.307149    0.8849      41.20   0.0000
+Wp                    21       3    .7671553    0.9874     424.19   0.0000
+{txt}{hline 74}
+
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}C            {txt}{c |}
+{space 11}P {c |}
+{space 9}--. {c |}{col 14}{res}{space 2} .0173021{col 26}{space 2} .1312046{col 37}{space 1}    0.13{col 46}{space 3}0.896{col 54}{space 4}-.2461021{col 67}{space 3} .2807062
+{txt}{space 9}L1. {c |}{col 14}{res}{space 2} .2162341{col 26}{space 2} .1192217{col 37}{space 1}    1.81{col 46}{space 3}0.076{col 54}{space 4}-.0231134{col 67}{space 3} .4555816
+{txt}{space 12} {c |}
+{space 10}W2 {c |}{col 14}{res}{space 2} .8101827{col 26}{space 2}  .044735{col 37}{space 1}   18.11{col 46}{space 3}0.000{col 54}{space 4} .7203734{col 67}{space 3} .8999921
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 16.55476{col 26}{space 2} 1.467978{col 37}{space 1}   11.28{col 46}{space 3}0.000{col 54}{space 4} 13.60767{col 67}{space 3} 19.50185
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}I            {txt}{c |}
+{space 11}P {c |}
+{space 9}--. {c |}{col 14}{res}{space 2} .1502219{col 26}{space 2} .1925336{col 37}{space 1}    0.78{col 46}{space 3}0.439{col 54}{space 4}-.2363054{col 67}{space 3} .5367492
+{txt}{space 9}L1. {c |}{col 14}{res}{space 2} .6159435{col 26}{space 2} .1809258{col 37}{space 1}    3.40{col 46}{space 3}0.001{col 54}{space 4} .2527197{col 67}{space 3} .9791672
+{txt}{space 12} {c |}
+{space 11}K {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2}-.1577876{col 26}{space 2} .0401521{col 37}{space 1}   -3.93{col 46}{space 3}0.000{col 54}{space 4}-.2383963{col 67}{space 3} -.077179
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 20.27821{col 26}{space 2} 8.383248{col 37}{space 1}    2.42{col 46}{space 3}0.019{col 54}{space 4} 3.448134{col 67}{space 3} 37.10828
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}Wp           {txt}{c |}
+{space 11}X {c |}
+{space 9}--. {c |}{col 14}{res}{space 2} .4388591{col 26}{space 2} .0396027{col 37}{space 1}   11.08{col 46}{space 3}0.000{col 54}{space 4} .3593534{col 67}{space 3} .5183647
+{txt}{space 9}L1. {c |}{col 14}{res}{space 2} .1466738{col 26}{space 2} .0431639{col 37}{space 1}    3.40{col 46}{space 3}0.001{col 54}{space 4} .0600186{col 67}{space 3} .2333291
+{txt}{space 12} {c |}
+{space 11}A {c |}{col 14}{res}{space 2} .1303957{col 26}{space 2} .0323884{col 37}{space 1}    4.03{col 46}{space 3}0.000{col 54}{space 4} .0653733{col 67}{space 3} .1954181
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.500297{col 26}{space 2} 1.275686{col 37}{space 1}    1.18{col 46}{space 3}0.245{col 54}{space 4} -1.06075{col 67}{space 3} 4.061344
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+Endogenous variables:  C I Wp P X W2 {res}
+{txt}Exogenous variables:   L.P L.K L.X A G T Wg {res}
+{txt}{hline 78}
+
+{com}. estimates store Klein
+
+. forecast create kleinmodelo
+{res}{txt}  Forecast model {res:kleinmodelo} started.
+
+{com}. forecast estimates Klein
+{res}{p 2 2 2}{txt}Added estimation results from {cmd:reg3}.{p_end}{p 2 2 2}{txt}Forecast model {res:kleinmodelo }{txt}now contains {res}3 {txt}endogenous variable{txt}s.{p_end}
+
+{com}. forecast identity X=C+I+G
+{res}{p 2 2 2}{txt}Forecast model {res:kleinmodelo }{txt}now contains {res}4 {txt}endogenous variable{txt}s.{p_end}
+
+{com}. forecast identity P=X-T-Wp
+{res}{p 2 2 2}{txt}Forecast model {res:kleinmodelo }{txt}now contains {res}5 {txt}endogenous variable{txt}s.{p_end}
+
+{com}. forecast identity K=L.K+I
+{res}{p 2 2 2}{txt}Forecast model {res:kleinmodelo }{txt}now contains {res}6 {txt}endogenous variable{txt}s.{p_end}
+
+{com}. forecast identity W2=Wp+Wg
+{res}{p 2 2 2}{txt}Forecast model {res:kleinmodelo }{txt}now contains {res}7 {txt}endogenous variable{txt}s.{p_end}
+
+{com}. forecast exog Wg G T A
+{res}{p 2 2 2}{txt}Forecast model {res:kleinmodelo }{txt}now contains {res}4 {txt}declared exogenous variable{txt}s.{p_end}
+
+{com}. forecast solve, prefix(s_) begin(1921)
+{res}
+{txt}Computing {res}dynamic {txt}forecasts for model {res}kleinmodelo.
+{txt}{dup 50:{c -}}
+Starting period:  {res}1921
+{txt}Ending period:    {res}1941
+{txt}Forecast prefix:  {res}s_
+
+{result}1921: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1922: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1923: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1924: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1925: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1926: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1927: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1928: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1929: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1930: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1931: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1932: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1933: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1934: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1935: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1936: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1937: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1938: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1939: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1940: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1941: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+
+{res}{txt}Forecast {res}7{txt} variables spanning {res}21{txt} periods.
+{hline 41}
+{res}
+{com}. tsline s_C C
+{res}
+{com}. tsline s_C C, lcolor(orenge) lpattern(dash) title("Pronóstico del modelo klein modelo Klein estático") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH")
+{p 0 4 2}
+{txt}(note:  named style
+orenge not found in class
+color,  default attributes used)
+{p_end}
+{p 0 4 2}
+{txt}(note:  named style
+orenge not found in class
+color,  default attributes used)
+{p_end}
+{res}
+{com}. tsline s_C C, lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein estático") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH")
+{res}
+{com}. tsline s_I I, lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein estático") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH")
+{res}
+{com}. tsline s_Wp Wp , lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein estático") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH")
+{res}
+{com}. tsline I
+{res}
+{com}. tsline I, xlabel(1921(3)1941)
+{res}
+{com}. forecast solve, prefix(d_) begin(1936)
+{res}
+{txt}Computing {res}dynamic {txt}forecasts for model {res}kleinmodelo.
+{txt}{dup 50:{c -}}
+Starting period:  {res}1936
+{txt}Ending period:    {res}1941
+{txt}Forecast prefix:  {res}d_
+
+{result}1936: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1937: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1938: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1939: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1940: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+{result}1941: {txt}{txt}{col 8}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.{txt}.
+
+{res}{txt}Forecast {res}7{txt} variables spanning {res}6{txt} periods.
+{hline 40}
+{res}
+{com}. tsline d_C C , lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH")
+{res}
+{com}. tsline d_C C , lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH") xline(1936)
+{res}
+{com}. tsline d_C C , lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH") xline(1935)
+{res}
+{com}. tsline d_I I , lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH") xline(1935)
+{res}
+{com}. tsline d_Wp Wp , lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH") xline(1935)
+{res}
+{com}. tsline d_X X, lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH") xline(1935)
+{res}
+{com}. tsline d_X X s_X, lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH") xline(1935)
+{res}
+{com}. tsline d_C C , lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH") name(g1, replace)
+{res}
+{com}. tsline d_I I , lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g3, replace)
+{res}
+{com}. tsline s_Wp Wp, lcolor(blue) lpattern(dash) title("Pronóstico del modelo klein modelo Klein dinámico") subtitle("1921-1941") note("Fuente:Econometría I-UNSCH") xlabel(1921(3)1941) name(g3, replace)
+{res}
+{com}. graph combine g1 g3
+{res}
+{com}. tsline d_C C, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) name(g1, replace)
+{res}
+{com}. . tsline d_I I, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g2, replace)
+{res}
+{com}. tsline s_Wp Wp, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g2, replace)
+{res}
+{com}. . tsline d_I I, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g2, replace)
+{res}
+{com}. . tsline d_Wp Wp, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g3, replace)
+{res}
+{com}. . tsline d_X X, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g4, replace)
+{res}
+{com}. . tsline d_P P, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g5, replace)
+{res}
+{com}. . tsline d_K K, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g6, replace)
+{res}
+{com}. . tsline d_w2 w2, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g7, replace)
+{err}variable {bf}d_w2{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. tsline d_w2 w2, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g7, replace)
+{err}variable {bf}d_w2{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. . tsline d_W2 W2, lcolor(green) lpattern(dash) title("Pronostico del modelo Klein dinamico") subtitle("1921-1941") note("Fuente: Econometria I-UNSCH") xlabel(1921(3)1941) xline(1935) name(g7, replace)
+{res}
+{com}. . graph combine g1 g2 g3 g4 g5 g6 g7
+{res}
+{com}. graph combine g1 g2
+{res}
+{com}. graph combine g3 g4
+{res}
+{com}. graph combine g5 g6
+{res}
+{com}. graph combine g5 g6. col(1)
+{err}g6. invalid name
+{txt}{search r(198), local:r(198);}
+
+{com}. ****1.MC2E***
+
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\achal\Downloads\Stata16\modKlein.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}10 Dec 2021, 22:02:59
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
